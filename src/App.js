@@ -9,7 +9,7 @@ import NavBar from "./Components/NavBar";
 function App() {
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
   const [user, setUser] = useState({});
-  const [screen, setScreen] = useState(false);
+  const [screen, setScreen] = useState(true);
   const [heroku, setHeroku] = useState("not ready");
 
   const history = useHistory();

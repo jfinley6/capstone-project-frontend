@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Nav, Navbar } from "react-bootstrap";
+import {
+  MDBContainer,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBBadge,
+  MDBIcon,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBCollapse,
+} from "mdb-react-ui-kit";
 
-
-function NavBar({ loggedInStatus, setScreen, handleLogout }) {
+function NavBar({ loggedInStatus, setScreen, handleLogout, user }) {
+  const [showBasic, setShowBasic] = useState();
   const history = useHistory();
 
   return (
@@ -57,78 +67,57 @@ function NavBar({ loggedInStatus, setScreen, handleLogout }) {
     //     </div>
     //   )}
     // </nav>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-        Out of Bounds Discs
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <MDBNavbar expand="lg" light bgColor="light">
+      <MDBContainer fluid>
+        <MDBNavbarBrand
+          role="button"
+          className="d-lg-flex w-100 text-sm-center col-sm-n mx-0"
+          onClick={() => history.push("/")}
+        >
+          Out of Bound Discs
+        </MDBNavbarBrand>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">
-              Home <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">
-                Action
-              </a>
-              <a class="dropdown-item" href="#">
-                Another action
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                Something else here
-              </a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">
-              Disabled
-            </a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0 d-flex">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-    </nav>
+        <MDBCollapse navbar show={showBasic}>
+          <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
+            <MDBNavbarItem className="d-flex justify-content-center align-items-center mx-3">
+              {loggedInStatus === "LOGGED_IN" ? (
+                <><img
+                  role="button"
+                  src={user.picture}
+                  alt="Generic placeholder image"
+                  className="img-fluid rounded-circle"
+                  style={{ width: "50px" }}
+                ></img>
+                <button onClick={handleLogout} className="btn btn-outline-primary ">Logout</button></>
+              ) : (
+                <MDBNavbarLink
+                  role="button"
+                  className="py-0"
+                  onClick={() => history.push("/home")}
+                >
+                  Login/Signup
+                </MDBNavbarLink>
+              )}
+            </MDBNavbarItem>
+
+            <MDBNavbarItem className="d-flex justify-content-center align-items-center">
+              <MDBNavbarLink className="d-flex" href="#">
+                <MDBBadge
+                  className="d-flex align-items-center"
+                  pill
+                  color="danger"
+                >
+                  0
+                </MDBBadge>
+                <span>
+                  <MDBIcon fas icon="shopping-cart"></MDBIcon>
+                </span>
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+          </MDBNavbarNav>
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
   );
 }
 
