@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
-import Home from "./Components/Home"
 
-import NavBar from "./Components/NavBar";
+import Content from "./Components/Content";
+import SideBar from "./Components/SideBar";
 
 function App() {
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
@@ -13,6 +13,10 @@ function App() {
   const [heroku, setHeroku] = useState("not ready");
 
   const history = useHistory();
+
+  // useEffect(() => {
+  //   axios.get("http://localhost:3001/home_page").then((response) => console.log(response))
+  // })
 
   useEffect(() => {
     axios.get("http://localhost:3001").then((response) => {
@@ -32,7 +36,7 @@ function App() {
         if (response.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
           setLoggedInStatus("LOGGED_IN");
           setUser(response.data.user);
-          history.push("/")
+          history.push("/");
         } else if (!response.data.logged_in && loggedInStatus === "LOGGED_IN") {
           setLoggedInStatus("NOT_LOGGED_IN");
           setUser({});
@@ -62,19 +66,38 @@ function App() {
       .catch((error) => console.log(error));
   }
 
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+  }
+
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+
   return (
     <div className="App d-flex flex-column justify-content-center">
-      <NavBar
-        loggedInStatus={loggedInStatus}
-        setScreen={setScreen}
-        handleLogout={handleLogout}
+      <SideBar
+        w3_close={w3_close}
         user={user}
+        loggedInStatus={loggedInStatus}
+        handleLogout={handleLogout}
+        setScreen={setScreen}
       />
-      <Switch>
-        <Route exact path={"/"}>
-          {/* <Content loggedInStatus={loggedInStatus} user={user} /> */}
-        </Route>
-        <Route exact path={"/home"}>
+      {/* <Switch>
+        <Route exact path={"/"}> */}
+      <Content
+        loggedInStatus={loggedInStatus}
+        user={user}
+        w3_close={w3_close}
+        w3_open={w3_open}
+        screen={screen}
+        setScreen={setScreen}
+        setLoggedInStatus={setLoggedInStatus}
+        handleLogin={handleLogin}
+      />
+      {/* </Route> */}
+      {/* <Route exact path={"/home"}>
           <Home
             screen={screen}
             setScreen={setScreen}
@@ -82,25 +105,8 @@ function App() {
             setLoggedInStatus={setLoggedInStatus}
             handleLogin={handleLogin}
           />
-        </Route>
-
-        {/* <Route exact path={"/new"}>
-          <NewPost
-            user={user}
-            storedPost={storedPost}
-            setStoredPost={setStoredPost}
-            setStoredSubject={setStoredSubject}
-            storedSubject={storedSubject}
-          />
         </Route> */}
-
-        {/* <Route exact path={"/user"}>
-          <User user={user} setUser={setUser} />
-        </Route> */}
-        {/* <Route exact path="/posts/:id">
-          <PostDetail user={user} loggedInStatus={loggedInStatus} />
-        </Route> */}
-      </Switch>
+      {/* </Switch> */}
     </div>
   );
 }
