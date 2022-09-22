@@ -1,8 +1,17 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function SideBar({ w3_close, user, loggedInStatus, handleLogout, setScreen }) {
+function SideBar({ w3_close, user, loggedInStatus, handleLogout, setScreen, setDiscs }) {
   const history = useHistory();
+
+  function myAccFunc() {
+    var x = document.getElementById("demoAcc");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
 
   return (
     <nav
@@ -46,13 +55,22 @@ function SideBar({ w3_close, user, loggedInStatus, handleLogout, setScreen }) {
           </>
         ) : (
           <div>
-            <button onClick={() => {
-                setScreen(true)
-                history.push("/home")}} className="w-75 btn btn-primary text-center mb-2">Login</button>
-            <button onClick={() => {
-                setScreen(false)
-                history.push("/home")
-            }}className="w-75 btn btn-outline-primary text-center">
+            <button
+              onClick={() => {
+                setScreen(true);
+                history.push("/authenticate");
+              }}
+              className="w-75 btn btn-primary text-center mb-2"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => {
+                setScreen(false);
+                history.push("/authenticate");
+              }}
+              className="w-75 btn btn-outline-primary text-center"
+            >
               Signup
             </button>
           </div>
@@ -63,22 +81,68 @@ function SideBar({ w3_close, user, loggedInStatus, handleLogout, setScreen }) {
             <i className="fa fa-search"></i>
           </p>
         </header>
-        <a href="#" className="w3-bar-item w3-button text-center">
-          Discs
+        <a
+          onClick={() => myAccFunc()}
+          id="myBtn"
+          className="w3-bar-item w3-button text-center"
+        >
+          Discs <i className="fa fa-caret-down"></i>
         </a>
+        <div
+          id="demoAcc"
+          className="w3-bar-block w3-hide w3-padding-large w3-medium"
+        >
+          <a onClick={() => {
+            setDiscs([])
+            history.push("/discs")
+          }} className="w3-bar-item w3-button">
+            All
+          </a>
+          <a onClick={() => {
+            setDiscs([])
+            history.push("/category/putter/1")
+          }} className="w3-bar-item w3-button">
+            Putter
+          </a>
+          <a onClick={() => {
+            setDiscs([]);
+            history.push("/category/approach/1")
+          }} className="w3-bar-item w3-button">
+            Approach
+          </a>
+          <a onClick={() => {
+            setDiscs([]);
+            history.push("/category/midrange/1")
+          }} className="w3-bar-item w3-button">
+            Midrange
+          </a>
+          <a onClick={() => {
+            setDiscs([]);
+            history.push("/category/control-driver/1")
+          }} className="w3-bar-item w3-button">
+            Control Driver
+          </a>
+          <a onClick={() => {
+            setDiscs([]);
+            history.push("/category/hybrid-driver/1")
+          }} className="w3-bar-item w3-button">
+            Hybrid Driver
+          </a>
+          <a onClick={() => {
+            setDiscs([]);
+            history.push("/category/distance-driver/1")
+          }} className="w3-bar-item w3-button">
+            Distance Driver
+          </a>
+        </div>
         <a href="#" className="w3-bar-item w3-button text-center">
           Manufacturers
-        </a>
-        <a href="#" className="w3-bar-item w3-button text-center">
-          Stability
-        </a>
-        <a href="#" className="w3-bar-item w3-button text-center">
-          Category
         </a>
       </div>
 
       <a
         href="#footer"
+        onClick={() => history.push("/")}
         className="w3-bar-item w3-button w3-padding text-center"
       >
         Contact
