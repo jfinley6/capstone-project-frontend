@@ -21,7 +21,7 @@ function NavBar({ loggedInStatus, setScreen, handleLogout, user }) {
     // <MDBNavbar
     //   expand="lg"
     //   className="sticky-top"
-      
+
     // >
     //   <MDBContainer fluid>
     //     <MDBNavbarBrand
@@ -55,7 +55,7 @@ function NavBar({ loggedInStatus, setScreen, handleLogout, user }) {
     //             <MDBNavbarLink
     //               role="button"
     //               className="py-0"
-    //               onClick={() => history.push("/home")}
+    //               onClick={() => history.push("/authenticate")}
     //             >
     //               Login/Signup
     //             </MDBNavbarLink>

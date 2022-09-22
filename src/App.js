@@ -9,14 +9,11 @@ import SideBar from "./Components/SideBar";
 function App() {
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
   const [user, setUser] = useState({});
+  const [discs, setDiscs] = useState([]);
   const [screen, setScreen] = useState(true);
   const [heroku, setHeroku] = useState("not ready");
 
   const history = useHistory();
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:3001/home_page").then((response) => console.log(response))
-  // })
 
   useEffect(() => {
     axios.get("http://localhost:3001").then((response) => {
@@ -72,7 +69,7 @@ function App() {
 
   function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
+    // document.getElementById("myOverlay").style.display = "none";
   }
 
   return (
@@ -83,10 +80,11 @@ function App() {
         loggedInStatus={loggedInStatus}
         handleLogout={handleLogout}
         setScreen={setScreen}
+        setDiscs={setDiscs}
       />
-      {/* <Switch>
-        <Route exact path={"/"}> */}
       <Content
+        discs={discs}
+        setDiscs={setDiscs}
         loggedInStatus={loggedInStatus}
         user={user}
         w3_close={w3_close}
@@ -96,17 +94,6 @@ function App() {
         setLoggedInStatus={setLoggedInStatus}
         handleLogin={handleLogin}
       />
-      {/* </Route> */}
-      {/* <Route exact path={"/home"}>
-          <Home
-            screen={screen}
-            setScreen={setScreen}
-            loggedInStatus={loggedInStatus}
-            setLoggedInStatus={setLoggedInStatus}
-            handleLogin={handleLogin}
-          />
-        </Route> */}
-      {/* </Switch> */}
     </div>
   );
 }

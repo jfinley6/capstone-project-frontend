@@ -1,24 +1,21 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios';
+import SmallHeader from './SmallHeader';
 
 function MainPage({w3_open, w3_close}) {
+const [mainPageDiscs, setMainPageDiscs] = useState([]);
+
+useEffect(() => {
+  axios.get("http://localhost:3001/home_page").then((response) => {
+    if (response.ok) {
+      setMainPageDiscs(response.data);
+    }
+  });
+});
+
   return (
     <div>
-      {" "}
-      {/* <!-- Top menu on small screens --> */}
-      <header
-        className="w3-bar w3-top w3-hide-large w3-black"
-        style={{ height: "10vh" }}
-      >
-        <div className="w3-bar-item w3-padding-24 w3-wide">
-          Out of Bounds Discs
-        </div>
-        <a
-          className="w3-bar-item w3-button w3-padding-24 w3-right"
-          onClick={() => w3_open()}
-        >
-          <i className="fa fa-bars"></i>
-        </a>
-      </header>
+      <SmallHeader w3_open={w3_open} />
       {/* <!-- Overlay effect when opening sidebar on small screens --> */}
       <div
         className="w3-overlay w3-hide-large"
@@ -219,8 +216,24 @@ function MainPage({w3_open, w3_close}) {
                 <i className="fa fa-fw fa-credit-card"></i> Credit Card
               </p>
 
-              <i className="fa fa-github w3-hover-opacity w3-large mr-2"></i>
-              <i className="fa fa-linkedin w3-hover-opacity w3-large"></i>
+              <a
+                target="_blank"
+                href="https://github.com/jfinley6/capstone-project-frontend"
+              >
+                <i
+                  role="button"
+                  className="fa mr-2 fa-github w3-hover-opacity w3-large"
+                ></i>
+              </a>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/john-finley-71ba22198/"
+              >
+                <i
+                  role="button"
+                  className="fa fa-linkedin w3-hover-opacity w3-large"
+                ></i>
+              </a>
             </div>
           </div>
         </footer>
