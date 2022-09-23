@@ -34,7 +34,9 @@ function SideBar({
           onClick={() => w3_close()}
           className="fa fa-remove w3-hide-large w3-button w3-display-topright"
         ></i>
-        <h3 onClick={() => history.push("/")} className="w3-wide" role="button">
+        <h3 onClick={() => {
+          window.scrollTo(0, 0);
+          history.push("/")}} className="w3-wide" role="button">
           <b>Out of Bounds Discs</b>
         </h3>
       </div>
