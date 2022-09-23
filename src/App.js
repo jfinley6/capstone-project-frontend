@@ -14,6 +14,7 @@ function App() {
   const [heroku, setHeroku] = useState("not ready");
   const [change, setChange] = useState(false)
   const [page, setPage] = useState(1);
+  const [cartNumber, setCartNumber] = useState(0)
 
   const history = useHistory();
 
@@ -85,6 +86,7 @@ function App() {
           setDiscs={setDiscs}
           setChange={setChange}
           setPage={setPage}
+          cartNumber={cartNumber}
         />
         <Content
           discs={discs}
