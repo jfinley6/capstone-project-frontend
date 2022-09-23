@@ -1,12 +1,21 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function SideBar({ w3_close, user, loggedInStatus, handleLogout, setScreen, setDiscs }) {
+function SideBar({
+  w3_close,
+  user,
+  loggedInStatus,
+  handleLogout,
+  setScreen,
+  setDiscs,
+  setChange,
+  setPage,
+}) {
   const history = useHistory();
 
   function myAccFunc() {
     var x = document.getElementById("demoAcc");
-    if (x.className.indexOf("w3-show") == -1) {
+    if (x.className.indexOf("w3-show") === -1) {
       x.className += " w3-show";
     } else {
       x.className = x.className.replace(" w3-show", "");
@@ -41,7 +50,7 @@ function SideBar({ w3_close, user, loggedInStatus, handleLogout, setScreen, setD
             <img
               role="button"
               src={user.picture}
-              alt="Generic placeholder image"
+              alt="Generic placeholder"
               className="rounded-circle img-fluid mx-2"
               style={{ width: "65px" }}
             ></img>
@@ -81,63 +90,96 @@ function SideBar({ w3_close, user, loggedInStatus, handleLogout, setScreen, setD
             <i className="fa fa-search"></i>
           </p>
         </header>
-        <a
+        <button
           onClick={() => myAccFunc()}
           id="myBtn"
           className="w3-bar-item w3-button text-center"
         >
           Discs <i className="fa fa-caret-down"></i>
-        </a>
+        </button>
         <div
           id="demoAcc"
           className="w3-bar-block w3-hide w3-padding-large w3-medium"
         >
-          <a onClick={() => {
-            setDiscs([])
-            history.push("/discs")
-          }} className="w3-bar-item w3-button">
+          <button
+            onClick={() => {
+              setDiscs([]);
+              history.push("/category/all");
+              setChange((current) => !current);
+              setPage(1);
+            }}
+            className="w3-bar-item w3-button"
+          >
             All
-          </a>
-          <a onClick={() => {
-            setDiscs([])
-            history.push("/category/putter")
-          }} className="w3-bar-item w3-button">
+          </button>
+          <button
+            onClick={() => {
+              setDiscs([]);
+              history.push("/category/putter");
+              setChange((current) => !current);
+              setPage(1);
+            }}
+            className="w3-bar-item w3-button"
+          >
             Putter
-          </a>
-          <a onClick={() => {
-            setDiscs([]);
-            history.push("/category/approach")
-          }} className="w3-bar-item w3-button">
+          </button>
+          <button
+            onClick={() => {
+              setDiscs([]);
+              history.push("/category/approach");
+              setChange((current) => !current);
+              setPage(1);
+            }}
+            className="w3-bar-item w3-button"
+          >
             Approach
-          </a>
-          <a onClick={() => {
-            setDiscs([]);
-            history.push("/category/midrange")
-          }} className="w3-bar-item w3-button">
+          </button>
+          <button
+            onClick={() => {
+              setDiscs([]);
+              history.push("/category/midrange");
+              setChange((current) => !current);
+              setPage(1);
+            }}
+            className="w3-bar-item w3-button"
+          >
             Midrange
-          </a>
-          <a onClick={() => {
-            setDiscs([]);
-            history.push("/category/control-driver")
-          }} className="w3-bar-item w3-button">
+          </button>
+          <button
+            onClick={() => {
+              setDiscs([]);
+              history.push("/category/control-driver");
+              setChange((current) => !current);
+              setPage(1);
+            }}
+            className="w3-bar-item w3-button"
+          >
             Control Driver
-          </a>
-          <a onClick={() => {
-            setDiscs([]);
-            history.push("/category/hybrid-driver")
-          }} className="w3-bar-item w3-button">
+          </button>
+          <button
+            onClick={() => {
+              setDiscs([]);
+              history.push("/category/hybrid-driver");
+              setChange((current) => !current);
+              setPage(1);
+            }}
+            className="w3-bar-item w3-button"
+          >
             Hybrid Driver
-          </a>
-          <a onClick={() => {
-            setDiscs([]);
-            history.push("/category/distance-driver")
-          }} className="w3-bar-item w3-button">
+          </button>
+          <button
+            onClick={() => {
+              setDiscs([]);
+              history.push("/category/distance-driver");
+              setChange((current) => !current);
+              setPage(1);
+            }}
+            className="w3-bar-item w3-button"
+          >
             Distance Driver
-          </a>
+          </button>
         </div>
-        <a href="#" className="w3-bar-item w3-button text-center">
-          Manufacturers
-        </a>
+        <button className="w3-bar-item w3-button text-center">Manufacturers</button>
       </div>
 
       <a
