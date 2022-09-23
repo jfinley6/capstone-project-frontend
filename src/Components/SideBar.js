@@ -10,6 +10,7 @@ function SideBar({
   setDiscs,
   setChange,
   setPage,
+  cartNumber
 }) {
   const history = useHistory();
 
@@ -85,9 +86,15 @@ function SideBar({
           </div>
         )}
         <header className="w3-container w3-xlarge mt-2">
-          <p className="w3-left mb-2">
-            <i className="fa fa-shopping-cart w3-margin-right"></i>
-            <i className="fa fa-search"></i>
+          <p className="w3-left mb-2 mt-1">
+            <i role="button" className="fa" style={{ fontSize: "24px" }}>
+              &#xf07a;
+            </i>
+            <span className="badge badge-warning mr-1" id="lblCartCount">
+              {" "}
+              {cartNumber}{" "}
+            </span>
+            <i role="button" className="fa fa-search"></i>
           </p>
         </header>
         <button
@@ -179,7 +186,9 @@ function SideBar({
             Distance Driver
           </button>
         </div>
-        <button className="w3-bar-item w3-button text-center">Manufacturers</button>
+        <button className="w3-bar-item w3-button text-center">
+          Manufacturers
+        </button>
       </div>
 
       <a
