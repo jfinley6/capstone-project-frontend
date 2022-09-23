@@ -36,7 +36,7 @@ function Content({
             handleLogin={handleLogin}
           />
         </Route>
-        <Route exact path="/category/:category_slug/:page">
+        <Route exact path="/category/:category_slug">
           <Discs discs={discs} setDiscs={setDiscs} w3_open={w3_open} w3_close={w3_close}/>
         </Route>
       </Switch>

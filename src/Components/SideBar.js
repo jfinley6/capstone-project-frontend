@@ -100,37 +100,37 @@ function SideBar({ w3_close, user, loggedInStatus, handleLogout, setScreen, setD
           </a>
           <a onClick={() => {
             setDiscs([])
-            history.push("/category/putter/1")
+            history.push("/category/putter")
           }} className="w3-bar-item w3-button">
             Putter
           </a>
           <a onClick={() => {
             setDiscs([]);
-            history.push("/category/approach/1")
+            history.push("/category/approach")
           }} className="w3-bar-item w3-button">
             Approach
           </a>
           <a onClick={() => {
             setDiscs([]);
-            history.push("/category/midrange/1")
+            history.push("/category/midrange")
           }} className="w3-bar-item w3-button">
             Midrange
           </a>
           <a onClick={() => {
             setDiscs([]);
-            history.push("/category/control-driver/1")
+            history.push("/category/control-driver")
           }} className="w3-bar-item w3-button">
             Control Driver
           </a>
           <a onClick={() => {
             setDiscs([]);
-            history.push("/category/hybrid-driver/1")
+            history.push("/category/hybrid-driver")
           }} className="w3-bar-item w3-button">
             Hybrid Driver
           </a>
           <a onClick={() => {
             setDiscs([]);
-            history.push("/category/distance-driver/1")
+            history.push("/category/distance-driver")
           }} className="w3-bar-item w3-button">
             Distance Driver
           </a>

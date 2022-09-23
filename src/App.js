@@ -57,8 +57,7 @@ function App() {
       })
       .then(() => {
         setLoggedInStatus("NOT_LOGGED_IN");
-        setUser({});
-        history.push("/");
+        setUser({});;
       })
       .catch((error) => console.log(error));
   }
