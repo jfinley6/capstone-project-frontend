@@ -96,15 +96,16 @@ function Login({ handleSuccessfulAuth, setScreen }) {
       )}
       <div className="d-flex flex-column align-items-center mt-2">
         <div>Don't have an account?</div>
-        <a
+        <button
           onClick={(e) => {
             e.preventDefault();
             setScreen(false);
           }}
-          className="link-secondary"
+          className="link-secondary btn btn-link"
+          style={{textDecoration : "none"}}
         >
           Sign Up Here
-        </a>
+        </button>
       </div>
     </form>
   );

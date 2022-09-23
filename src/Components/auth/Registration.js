@@ -107,15 +107,16 @@ function Registration({ handleSuccessfulAuth, setScreen }) {
       </button>
       <div className="d-flex flex-column align-items-center mt-2">
         <div>Already Have An Account?</div>
-        <a
+        <button
           onClick={(e) => {
             e.preventDefault();
             setScreen(true);
           }}
-          className="link-secondary"
+          className="link-secondary btn btn-link"
+          style={{textDecoration: "none"}}
         >
           Login Here
-        </a>
+        </button>
       </div>
     </form>
   );
