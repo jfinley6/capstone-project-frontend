@@ -22,7 +22,7 @@ function Home({ handleLogin, screen, setScreen, w3_open, w3_close }) {
           setScreen={setScreen}
         />
       ) : null}
-      {screen == true ? (
+      {screen === true ? (
         <Login
           handleSuccessfulAuth={handleSuccessfulAuth}
           setScreen={setScreen}
