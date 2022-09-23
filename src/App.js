@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 
@@ -12,13 +12,15 @@ function App() {
   const [discs, setDiscs] = useState([]);
   const [screen, setScreen] = useState(true);
   const [heroku, setHeroku] = useState("not ready");
+  const [change, setChange] = useState(false)
+  const [page, setPage] = useState(1);
 
   const history = useHistory();
 
   useEffect(() => {
     axios.get("http://localhost:3001").then((response) => {
       if (response.data.status === "Nobodies home") {
-        // setHeroku("ready");
+        setHeroku("ready");
         checkLoginStatus();
       }
     });
@@ -72,28 +74,35 @@ function App() {
   }
 
   return (
-    <div className="App d-flex flex-column justify-content-center">
-      <SideBar
-        w3_close={w3_close}
-        user={user}
-        loggedInStatus={loggedInStatus}
-        handleLogout={handleLogout}
-        setScreen={setScreen}
-        setDiscs={setDiscs}
-      />
-      <Content
-        discs={discs}
-        setDiscs={setDiscs}
-        loggedInStatus={loggedInStatus}
-        user={user}
-        w3_close={w3_close}
-        w3_open={w3_open}
-        screen={screen}
-        setScreen={setScreen}
-        setLoggedInStatus={setLoggedInStatus}
-        handleLogin={handleLogin}
-      />
-    </div>
+    <>
+      {heroku === "ready" ? <div className="App d-flex flex-column justify-content-center">
+        <SideBar
+          w3_close={w3_close}
+          user={user}
+          loggedInStatus={loggedInStatus}
+          handleLogout={handleLogout}
+          setScreen={setScreen}
+          setDiscs={setDiscs}
+          setChange={setChange}
+          setPage={setPage}
+        />
+        <Content
+          discs={discs}
+          setDiscs={setDiscs}
+          loggedInStatus={loggedInStatus}
+          user={user}
+          w3_close={w3_close}
+          w3_open={w3_open}
+          screen={screen}
+          setScreen={setScreen}
+          setLoggedInStatus={setLoggedInStatus}
+          handleLogin={handleLogin}
+          change={change}
+          page={page}
+          setPage={setPage}
+        />
+      </div> : null}
+    </>
   );
 }
 
