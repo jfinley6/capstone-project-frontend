@@ -17,8 +17,8 @@ function MainPage({ w3_open, w3_close }) {
   }, []);
 
   let discPreviews = mainPageDiscs.map((disc) => {
-    return <MainPageDiscPreview key={disc.id} disc={disc} />
-  })
+    return <MainPageDiscPreview key={disc.id} disc={disc} />;
+  });
 
   return (
     <div id="mainPage">
@@ -61,9 +61,7 @@ function MainPage({ w3_open, w3_close }) {
         </div>
 
         {/* <!-- Product grid --> */}
-        <div className="w3-row w3-grayscale mt-4">
-          {discPreviews}
-        </div>
+        <div className="w3-row w3-grayscale mt-4">{discPreviews}</div>
 
         {/* <!-- Footer --> */}
         <footer
@@ -120,13 +118,53 @@ function MainPage({ w3_open, w3_close }) {
             <div className="w3-col s4">
               <h4>About</h4>
               <p>
-                <a>About us</a>
+                <button
+                  className="btn-link"
+                  style={{
+                    textDecoration: "none",
+                    background: "none",
+                    color: "inherit",
+                    border: "none",
+                    padding: "0",
+                    font: "inherit",
+                    cursor: "pointer",
+                    outline: "inherit",
+                  }}
+                >
+                  About us
+                </button>
               </p>
               <p>
-                <a>Find store</a>
+                <button
+                  style={{
+                    textDecoration: "none",
+                    background: "none",
+                    color: "inherit",
+                    border: "none",
+                    padding: "0",
+                    font: "inherit",
+                    cursor: "pointer",
+                    outline: "inherit",
+                  }}
+                >
+                  Find store
+                </button>
               </p>
               <p>
-                <a>Help</a>
+                <button
+                  style={{
+                    textDecoration: "none",
+                    background: "none",
+                    color: "inherit",
+                    border: "none",
+                    padding: "0",
+                    font: "inherit",
+                    cursor: "pointer",
+                    outline: "inherit",
+                  }}
+                >
+                  Help
+                </button>
               </p>
             </div>
 
