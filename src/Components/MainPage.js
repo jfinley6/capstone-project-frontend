@@ -1,20 +1,27 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios';
-import SmallHeader from './SmallHeader';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import SmallHeader from "./SmallHeader";
+import MainPageDiscPreview from "./MainPageDiscPreview";
 
-function MainPage({w3_open, w3_close}) {
-const [mainPageDiscs, setMainPageDiscs] = useState([]);
+function MainPage({ w3_open, w3_close }) {
+  const [mainPageDiscs, setMainPageDiscs] = useState([]);
 
-useEffect(() => {
-  axios.get("http://localhost:3001/home_page").then((response) => {
-    if (response.ok) {
-      setMainPageDiscs(response.data);
-    }
-  });
-});
+  useEffect(() => {
+    document.getElementById("mainPage").style.display = "none";
+    axios.get("http://localhost:3001/home_page").then((response) => {
+      if (response.status === 200) {
+        setMainPageDiscs(response.data);
+        document.getElementById("mainPage").style.display = "";
+      }
+    });
+  }, []);
+
+  let discPreviews = mainPageDiscs.map((disc) => {
+    return <MainPageDiscPreview key={disc.id} disc={disc} />
+  })
 
   return (
-    <div>
+    <div id="mainPage">
       <SmallHeader w3_open={w3_open} />
       {/* <!-- Overlay effect when opening sidebar on small screens --> */}
       <div
@@ -46,90 +53,16 @@ useEffect(() => {
             <h1 className="w3-hide-large w3-hide-medium">New arrivals</h1>
             <h1 className="w3-hide-small">COLLECTION 2022</h1>
             <p>
-              <a className="w3-button w3-black w3-padding-large w3-large">
+              <button className="w3-button w3-black w3-padding-large w3-large">
                 SHOP NOW
-              </a>
+              </button>
             </p>
           </div>
         </div>
 
         {/* <!-- Product grid --> */}
         <div className="w3-row w3-grayscale mt-4">
-          <div className="w3-col l3 s6">
-            <div className="w3-container">
-              <img src="/w3images/jeans1.jpg" style={{ width: "100%" }} />
-              <p>
-                Disc<b>$24.99</b>
-              </p>
-            </div>
-            <div className="w3-container">
-              <img src="/w3images/jeans2.jpg" style={{ width: "100%" }} />
-              <p>
-                Disc<b>$19.99</b>
-              </p>
-            </div>
-          </div>
-
-          <div className="w3-col l3 s6">
-            <div className="w3-container">
-              <div className="w3-display-container">
-                <img src="/w3images/jeans2.jpg" style={{ width: "100%" }} />
-                <span className="w3-tag w3-display-topleft">New</span>
-                <div className="w3-display-middle w3-display-hover">
-                  <button className="w3-button w3-black">
-                    Buy now <i className="fa fa-shopping-cart"></i>
-                  </button>
-                </div>
-              </div>
-              <p>
-                Disc<b>$19.99</b>
-              </p>
-            </div>
-            <div className="w3-container">
-              <img src="/w3images/jeans3.jpg" style={{ width: "100%" }} />
-              <p>
-                Disc<b>$20.50</b>
-              </p>
-            </div>
-          </div>
-
-          <div className="w3-col l3 s6">
-            <div className="w3-container">
-              <img src="/w3images/jeans3.jpg" style={{ width: "100%" }} />
-              <p>
-                Disc<b>$20.50</b>
-              </p>
-            </div>
-            <div className="w3-container">
-              <div className="w3-display-container">
-                <img src="/w3images/jeans4.jpg" style={{ width: "100%" }} />
-                <span className="w3-tag w3-display-topleft">Sale</span>
-                <div className="w3-display-middle w3-display-hover">
-                  <button className="w3-button w3-black">
-                    Buy now <i className="fa fa-shopping-cart"></i>
-                  </button>
-                </div>
-              </div>
-              <p>
-                Disc<b className="w3-text-red">$14.99</b>
-              </p>
-            </div>
-          </div>
-
-          <div className="w3-col l3 s6">
-            <div className="w3-container">
-              <img src="/w3images/jeans4.jpg" style={{ width: "100%" }} />
-              <p>
-                Disc<b>$14.99</b>
-              </p>
-            </div>
-            <div className="w3-container">
-              <img src="/w3images/jeans1.jpg" style={{ width: "100%" }} />
-              <p>
-                Disc<b>$24.99</b>
-              </p>
-            </div>
-          </div>
+          {discPreviews}
         </div>
 
         {/* <!-- Footer --> */}
@@ -141,7 +74,7 @@ useEffect(() => {
             <div className="w3-col s4">
               <h4>Contact</h4>
               <p>Questions? Go ahead.</p>
-              <form action="/action_page.php" target="_blank">
+              <form action="/action_page.php" target="_blank" rel="noreferrer">
                 <p>
                   <input
                     className="w3-input w3-border"
@@ -187,13 +120,13 @@ useEffect(() => {
             <div className="w3-col s4">
               <h4>About</h4>
               <p>
-                <a href="#">About us</a>
+                <a>About us</a>
               </p>
               <p>
-                <a href="#">Find store</a>
+                <a>Find store</a>
               </p>
               <p>
-                <a href="#">Help</a>
+                <a>Help</a>
               </p>
             </div>
 
@@ -218,6 +151,7 @@ useEffect(() => {
 
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://github.com/jfinley6/capstone-project-frontend"
               >
                 <i
@@ -227,6 +161,7 @@ useEffect(() => {
               </a>
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://www.linkedin.com/in/john-finley-71ba22198/"
               >
                 <i
@@ -244,4 +179,4 @@ useEffect(() => {
   );
 }
 
-export default MainPage
+export default MainPage;
