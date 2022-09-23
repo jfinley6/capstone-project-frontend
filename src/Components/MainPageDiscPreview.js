@@ -8,13 +8,13 @@ function MainPageDiscPreview({disc}) {
           <img src={disc.picture_url} style={{ width: "100%" }} alt="discpreview" />
           <div className="w3-display-middle w3-display-hover">
             <button onClick={() => console.log(disc.id)} className="w3-button w3-black">
-              More Info <i className="fa fa-shopping-cart"></i>
+              More Info
             </button>
           </div>
         </div>
         <p>
-          {disc.name}
-          <b>$19.99</b>
+          {disc.name} | 
+          <b> {disc.price}</b>
         </p>
       </div>
     </div>
