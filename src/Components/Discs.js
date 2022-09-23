@@ -4,43 +4,47 @@ import axios from "axios";
 import "/Users/johnfinley/Development/code/phase-5/capstone-frontend/src/Discs.css";
 import { useParams } from "react-router-dom";
 import SmallHeader from "./SmallHeader";
+import ReactPaginate from "react-paginate";
 
-function Discs({ discs, setDiscs, w3_open, w3_close }) {
-  const [page, setPage] = useState(1);
+function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change }) {
+  const [pageCount, setPageCount] = useState(0);
   let { category_slug } = useParams();
 
+
   useEffect(() => {
-    if (discs.length === 0) {
-      console.log("hello")
+    document.querySelector("#scrollTop").style.display = "none";
+    if (category_slug === "all") {
+      axios
+      .get(`http://localhost:3001/all/${page}`)
+      .then(response => {
+        setDiscs(response.data.discs)
+        setPageCount(Math.ceil(response.data.total / 24));
+        document.querySelector("#scrollTop").style.display = "";
+      })
+    } else {
       axios
         .get(`http://localhost:3001/category/${category_slug}/${page}`)
         .then((response) => {
-          setDiscs(response.data);
+          setDiscs(response.data.discs);
+          setPageCount(Math.ceil(response.data.total / 24));
+          document.querySelector("#scrollTop").style.display = "";
         });
     }
-  }, [discs]);
+    
+  }, [change, page]);
 
-  // function onScroll() {
-  //   if (
-  //     window.innerHeight + Math.ceil(window.pageYOffset) >=
-  //     document.body.offsetHeight
-  //   ) {
-  //     document.querySelector(".loader").style.display = ""
-  //     setPage((page) => page + 1);
-      
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", onScroll);
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, []);
+  const handlePageClick = (event) => {
+    if (page <= pageCount) {
+      setPage(event.selected + 1);
+    }
+  };
 
   let discSelection = discs.map((disc) => {
     return <DiscPreview key={disc.id} disc={disc} />;
   });
+
   return (
-    <div>
+    <div id="scrollTop">
       <SmallHeader w3_open={w3_open} />
       <div
         id="disc"
@@ -57,7 +61,30 @@ function Discs({ discs, setDiscs, w3_open, w3_close }) {
         >
           {discSelection}
         </div>
-        <span style={{ display: "none" }} className="mt-5 loader"></span>
+        <div className="d-flex justify-content-center mt-3">
+          {pageCount > 1 ? (
+            <ReactPaginate
+              breakLabel="..."
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={5}
+              pageCount={pageCount}
+              previousLabel="< previous"
+              nextLabel="next >"
+              renderOnZeroPageCount={null}
+              breakClassName={"page-item"}
+              breakLinkClassName={"page-link"}
+              containerClassName={"pagination"}
+              pageClassName={"page-item"}
+              pageLinkClassName={"page-link"}
+              previousClassName={"page-item"}
+              previousLinkClassName={"page-link"}
+              nextClassName={"page-item"}
+              nextLinkClassName={"page-link"}
+              activeClassName={"active"}
+              forcePage={page - 1}
+            />
+          ) : null}
+        </div>
       </div>
     </div>
   );

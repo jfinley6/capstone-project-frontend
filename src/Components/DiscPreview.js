@@ -1,4 +1,3 @@
-import { computeHeadingLevel } from "@testing-library/react";
 import React from "react";
 
 function DiscPreview({ disc }) {
@@ -19,29 +18,50 @@ function DiscPreview({ disc }) {
       <div className="card h-100 shadow">
         <div className="w-100 d-flex justify-content-between">
           <div className="label-top shadow-sm mx-1 my-1">
-            <a
-              style={{ textDecoration: "none" }}
+            <button
+              style={{
+                textDecoration: "none",
+                background: "none",
+                color: "inherit",
+                border: "none",
+                padding: "0",
+                font: "inherit",
+                cursor: "pointer",
+                outline: "inherit",
+              }}
               onClick={(event) => console.log(event.target.innerText)}
               className="text-white"
-              role="button"
             >
               {brand}
-            </a>
+            </button>
           </div>
           <div className="label-top shadow-sm mx-1 my-1">
-            <a
-              style={{ textDecoration: "none" }}
+            <button
+              style={{
+                textDecoration: "none",
+                background: "none",
+                color: "inherit",
+                border: "none",
+                padding: "0",
+                font: "inherit",
+                cursor: "pointer",
+                outline: "inherit",
+              }}
               onClick={(event) => console.log(event.target.innerText)}
               className="text-white"
-              role="button"
             >
               {category}
-            </a>
+            </button>
           </div>
         </div>
-        <a onClick={() => console.log(disc.id)}>
-          <img role="button" src={picture_url} className="card-img-top" alt="product.title" />
-        </a>
+        <div onClick={() => console.log(disc.id)}>
+          <img
+            role="button"
+            src={picture_url}
+            className="card-img-top"
+            alt="product.title"
+          />
+        </div>
         <div className="card-body">
           <div className="clearfix mb-3 d-flex justify-content-center">
             <span className="float-start badge rounded-pill bg-success">
@@ -49,7 +69,7 @@ function DiscPreview({ disc }) {
             </span>
           </div>
           <h5 className="card-title">
-            <div target="_blank" className="w-100">
+            <div target="_blank" rel="noreferrer" className="w-100">
               <span style={{ fontFamily: "copperplate", fontSize: "1.4em" }}>
                 {name}
               </span>
@@ -67,12 +87,12 @@ function DiscPreview({ disc }) {
           </h5>
 
           <div className="d-grid gap-2 my-4">
-            <a
+            <button
               onClick={() => console.log("Add to Cart")}
               className="btn btn-warning bold-btn"
             >
               Add to cart
-            </a>
+            </button>
           </div>
           <div className="clearfix mb-1 d-flex justify-content-center">
             <span className="float-end">

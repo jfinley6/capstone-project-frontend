@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MainPage from "./MainPage";
 import Discs from "./Discs";
 
-import { Switch, Route, useHistory, w3_open, w3_close } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import Home from "./Home";
 
@@ -16,9 +16,11 @@ function Content({
   setLoggedInStatus,
   handleLogin,
   discs,
-  setDiscs
+  setDiscs,
+  change,
+  page,
+  setPage,
 }) {
-  const history = useHistory();
   return (
     <div>
       <Switch>
@@ -37,7 +39,15 @@ function Content({
           />
         </Route>
         <Route exact path="/category/:category_slug">
-          <Discs discs={discs} setDiscs={setDiscs} w3_open={w3_open} w3_close={w3_close}/>
+          <Discs
+            change={change}
+            page={page}
+            setPage={setPage}
+            discs={discs}
+            setDiscs={setDiscs}
+            w3_open={w3_open}
+            w3_close={w3_close}
+          />
         </Route>
       </Switch>
     </div>
