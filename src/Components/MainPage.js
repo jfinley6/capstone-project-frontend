@@ -65,11 +65,11 @@ function MainPage({ w3_open, w3_close }) {
 
         {/* <!-- Footer --> */}
         <footer
-          className="w3-padding-64 w3-light-grey w3-small w3-center"
+          className="w3-padding-64 w3-light-grey w3-small"
           id="footer"
         >
-          <div className="w3-row-padding">
-            <div className="w3-col s4">
+          <div className="w3-row-padding d-flex">
+            <div className="w3-col s4 d-flex flex-column ">
               <h4>Contact</h4>
               <p>Questions? Go ahead.</p>
               <form action="/action_page.php" target="_blank" rel="noreferrer">
@@ -168,8 +168,8 @@ function MainPage({ w3_open, w3_close }) {
               </p>
             </div>
 
-            <div className="w3-col s4 w3-justify">
-              <h4>Store</h4>
+            <div className="w3-col s4 w3-justify d-flex flex-column align-items-center">
+              <h4 className="text-center">Store</h4>
               <p>
                 <i className="fa fa-fw fa-map-marker"></i> Denver, CO
               </p>
@@ -179,7 +179,7 @@ function MainPage({ w3_open, w3_close }) {
               <p>
                 <i className="fa fa-fw fa-envelope"></i> johnfinley@gmail.com
               </p>
-              <h4>We accept</h4>
+              <h4 className="text-center">We accept</h4>
               <p>
                 <i className="fa fa-fw fa-cc-amex"></i> Amex
               </p>
@@ -187,26 +187,28 @@ function MainPage({ w3_open, w3_close }) {
                 <i className="fa fa-fw fa-credit-card"></i> Credit Card
               </p>
 
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://github.com/jfinley6/capstone-project-frontend"
-              >
-                <i
-                  role="button"
-                  className="fa mr-2 fa-github w3-hover-opacity w3-large"
-                ></i>
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.linkedin.com/in/john-finley-71ba22198/"
-              >
-                <i
-                  role="button"
-                  className="fa fa-linkedin w3-hover-opacity w3-large"
-                ></i>
-              </a>
+              <div className="d-flex justify-content-center">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/jfinley6/capstone-project-frontend"
+                >
+                  <i
+                    role="button"
+                    className="fa mr-2 fa-github w3-hover-opacity w3-large"
+                  ></i>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/john-finley-71ba22198/"
+                >
+                  <i
+                    role="button"
+                    className="fa fa-linkedin w3-hover-opacity w3-large"
+                  ></i>
+                </a>
+              </div>
             </div>
           </div>
         </footer>
