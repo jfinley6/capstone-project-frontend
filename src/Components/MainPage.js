@@ -64,57 +64,8 @@ function MainPage({ w3_open, w3_close }) {
         <div className="w3-row w3-grayscale mt-4">{discPreviews}</div>
 
         {/* <!-- Footer --> */}
-        <footer
-          className="w3-padding-64 w3-light-grey w3-small"
-          id="footer"
-        >
+        <footer className="w3-padding-64 w3-light-grey w3-small" id="footer">
           <div className="w3-row-padding d-flex">
-            <div className="w3-col s4 d-flex flex-column ">
-              <h4>Contact</h4>
-              <p>Questions? Go ahead.</p>
-              <form action="/action_page.php" target="_blank" rel="noreferrer">
-                <p>
-                  <input
-                    className="w3-input w3-border"
-                    type="text"
-                    placeholder="Name"
-                    name="Name"
-                    required
-                  />
-                </p>
-                <p>
-                  <input
-                    className="w3-input w3-border"
-                    type="text"
-                    placeholder="Email"
-                    name="Email"
-                    required
-                  />
-                </p>
-                <p>
-                  <input
-                    className="w3-input w3-border"
-                    type="text"
-                    placeholder="Subject"
-                    name="Subject"
-                    required
-                  />
-                </p>
-                <p>
-                  <input
-                    className="w3-input w3-border"
-                    type="text"
-                    placeholder="Message"
-                    name="Message"
-                    required
-                  />
-                </p>
-                <button type="submit" className="w3-button w3-block w3-black">
-                  Send
-                </button>
-              </form>
-            </div>
-
             <div className="w3-col s4">
               <h4>About</h4>
               <p>
@@ -166,6 +117,52 @@ function MainPage({ w3_open, w3_close }) {
                   Help
                 </button>
               </p>
+            </div>
+
+            <div className="w3-col s4 d-flex flex-column ">
+              <h4>Contact</h4>
+              <p>Questions? Go ahead.</p>
+              <form action="/action_page.php" target="_blank" rel="noreferrer">
+                <p>
+                  <input
+                    className="w3-input w3-border"
+                    type="text"
+                    placeholder="Name"
+                    name="Name"
+                    required
+                  />
+                </p>
+                <p>
+                  <input
+                    className="w3-input w3-border"
+                    type="text"
+                    placeholder="Email"
+                    name="Email"
+                    required
+                  />
+                </p>
+                <p>
+                  <input
+                    className="w3-input w3-border"
+                    type="text"
+                    placeholder="Subject"
+                    name="Subject"
+                    required
+                  />
+                </p>
+                <p>
+                  <input
+                    className="w3-input w3-border"
+                    type="text"
+                    placeholder="Message"
+                    name="Message"
+                    required
+                  />
+                </p>
+                <button type="submit" className="w3-button w3-block w3-black">
+                  Send
+                </button>
+              </form>
             </div>
 
             <div className="w3-col s4 w3-justify d-flex flex-column align-items-center">
