@@ -5,6 +5,7 @@ function SmallHeader({w3_open}) {
   const history = useHistory()
   return (
     <header
+    id="smallHeader"
       className="w3-bar w3-top w3-hide-large w3-black"
       style={{ height: "10vh" }}
     >

@@ -23,6 +23,8 @@ function SideBar({
     }
   }
 
+  
+
   return (
     <nav
       className="w3-sidebar w3-bar-block w3-white w3-collapse w3-top"
@@ -76,7 +78,7 @@ function SideBar({
               onClick={() => {
                 setScreen(true);
                 history.push("/authenticate")
-                window.scrollTo(0, 0);
+                window.scrollTo(0,0);
               }}
               className="w-75 btn btn-primary text-center mb-2"
             >
@@ -202,7 +204,9 @@ function SideBar({
 
       <a
         href="#footer"
-        onClick={() => document.getElementById("footer").scrollIntoView()}
+        onClick={() => {
+          w3_close()
+          document.getElementById("footer").scrollIntoView()}}
         className="w3-bar-item w3-button w3-padding text-center"
       >
         Contact

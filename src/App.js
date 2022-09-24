@@ -74,6 +74,23 @@ function App() {
     // document.getElementById("myOverlay").style.display = "none";
   }
 
+  
+
+  // I'm using "click" but it works with any event
+  document.addEventListener("click", (event) => {
+    const specifiedElement = document.getElementById("mySidebar");
+    const specifiedElement2 = document.getElementById("smallHeader");
+    const isClickInside = specifiedElement.contains(event.target);
+    const isClickInside2 = specifiedElement2.contains(event.target);
+
+
+    if (!isClickInside && !isClickInside2) {
+      w3_close()
+    } else if (isClickInside2) {
+      w3_open()
+    }
+  });
+
   return (
     <>
       {heroku === "ready" ? <div className="App d-flex flex-column justify-content-center">
