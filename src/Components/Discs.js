@@ -7,22 +7,45 @@ import SmallHeader from "./SmallHeader";
 import ReactPaginate from "react-paginate";
 import Footer from "./Footer";
 
-function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change, discCategory }) {
+function Discs({
+  page,
+  setPage,
+  discs,
+  setDiscs,
+  w3_open,
+  change,
+  discCategory,
+}) {
   const [pageCount, setPageCount] = useState(0);
+  // const [sortType, setSortType] = useState("name");
+
   let { category_slug } = useParams();
 
+  // useEffect(() => {
+  //   const sortArray = type => {
+  //     const types = {
+  //       name: "name",
+  //       speed: "speed",
+  //       glide: "glide",
+  //       turn: "turn",
+  //       fade: "fade"
+  //     }
+  //     const sortProperty = types[type]
+  //     const sorted = [...discs].sort((a, b) => b[sortProperty] - a[sortProperty])
+  //     setDiscs(sorted)
+  //   }
+
+  //   sortArray(sortType)
+  // },[sortType])
 
   useEffect(() => {
     document.querySelector("#scrollTop").style.display = "none";
     if (category_slug === "all") {
-      axios
-      .get(`http://localhost:3001/all/${page}`)
-      .then(response => {
-        setDiscs(response.data.discs)
-        console.log(response.data.total / 24)
-        setPageCount(Math.ceil((response.data.total / 24) - 2));
+      axios.get(`http://localhost:3001/all/${page}`).then((response) => {
+        setDiscs(response.data.discs);
+        setPageCount(Math.ceil(response.data.total / 24 - 2));
         document.querySelector("#scrollTop").style.display = "";
-      })
+      });
     } else {
       axios
         .get(`http://localhost:3001/category/${category_slug}/${page}`)
@@ -32,7 +55,6 @@ function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change, disc
           document.querySelector("#scrollTop").style.display = "";
         });
     }
-    
   }, [change, page]);
 
   const handlePageClick = (event) => {
@@ -57,7 +79,16 @@ function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change, disc
           width: "fit-content",
         }}
       >
-      <h1 className="text-left" style={{fontFamily: "copperplate"}}>{discCategory}</h1>
+        <h1 className="text-left" style={{ fontFamily: "copperplate" }}>
+          {discCategory}
+        </h1>
+        {/* <select onChange={(e) => setSortType(e.target.value)}>
+          <option value="name">Name</option>
+          <option value="speed">Speed</option>
+          <option value="glide">Glide</option>
+          <option value="turn">Turn</option>
+          <option value="fade">Fade</option>
+        </select> */}
         <div
           id="discContainer"
           className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3"
