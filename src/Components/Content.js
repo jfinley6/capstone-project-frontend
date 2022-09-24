@@ -20,7 +20,9 @@ function Content({
   change,
   page,
   setPage,
-  discCategory
+  discCategory,
+  sortType,
+  setSortType
 }) {
   return (
     <div>
@@ -49,6 +51,8 @@ function Content({
             w3_open={w3_open}
             w3_close={w3_close}
             discCategory={discCategory}
+            sortType={sortType}
+            setSortType={setSortType}
           />
         </Route>
       </Switch>
