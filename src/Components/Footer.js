@@ -118,9 +118,21 @@ function Footer() {
           <p>
             <i className="fa fa-fw fa-cc-amex"></i> Amex
           </p>
-          <p>
+          <p className='mb-0'>
             <i className="fa fa-fw fa-credit-card"></i> Credit Card
           </p>
+            <hr
+              style={{
+                color: "black",
+                borderColor: "black",
+                height: "1px",
+                width: "40%",
+                margin: "0",
+                marginBottom: "7px",
+                marginTop: "7px"
+              }}
+            />
+
 
           <div className="d-flex justify-content-center">
             <a
