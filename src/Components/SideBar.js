@@ -11,6 +11,7 @@ function SideBar({
   setChange,
   setPage,
   cartNumber,
+  setDiscCategory
 }) {
   const history = useHistory();
 
@@ -121,6 +122,7 @@ function SideBar({
         >
           <button
             onClick={() => {
+              setDiscCategory("All Discs")
               setDiscs([]);
               history.push("/category/all");
               setChange((current) => !current);
@@ -132,6 +134,7 @@ function SideBar({
           </button>
           <button
             onClick={() => {
+              setDiscCategory("Putters");
               setDiscs([]);
               history.push("/category/putter");
               setChange((current) => !current);
@@ -143,6 +146,7 @@ function SideBar({
           </button>
           <button
             onClick={() => {
+              setDiscCategory("Approach Discs");
               setDiscs([]);
               history.push("/category/approach");
               setChange((current) => !current);
@@ -154,6 +158,7 @@ function SideBar({
           </button>
           <button
             onClick={() => {
+              setDiscCategory("Midrange Discs");
               setDiscs([]);
               history.push("/category/midrange");
               setChange((current) => !current);
@@ -165,6 +170,7 @@ function SideBar({
           </button>
           <button
             onClick={() => {
+              setDiscCategory("Control Drivers");
               setDiscs([]);
               history.push("/category/control-driver");
               setChange((current) => !current);
@@ -176,6 +182,7 @@ function SideBar({
           </button>
           <button
             onClick={() => {
+              setDiscCategory("Hybrid Drivers");
               setDiscs([]);
               history.push("/category/hybrid-driver");
               setChange((current) => !current);
@@ -187,6 +194,7 @@ function SideBar({
           </button>
           <button
             onClick={() => {
+              setDiscCategory("Distance Drivers");
               setDiscs([]);
               history.push("/category/distance-driver");
               setChange((current) => !current);

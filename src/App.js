@@ -15,6 +15,7 @@ function App() {
   const [change, setChange] = useState(false)
   const [page, setPage] = useState(1);
   const [cartNumber, setCartNumber] = useState(0)
+  const [discCategory, setDiscCategory] = useState("All Discs")
 
   const history = useHistory();
 
@@ -86,6 +87,7 @@ function App() {
 
     if (!isClickInside && !isClickInside2) {
       w3_close()
+      w3_close()
     } else if (isClickInside2) {
       w3_open()
     }
@@ -104,6 +106,7 @@ function App() {
           setChange={setChange}
           setPage={setPage}
           cartNumber={cartNumber}
+          setDiscCategory={setDiscCategory}
         />
         <Content
           discs={discs}
@@ -119,6 +122,7 @@ function App() {
           change={change}
           page={page}
           setPage={setPage}
+          discCategory={discCategory}
         />
       </div> : null}
     </>

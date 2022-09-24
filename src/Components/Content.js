@@ -20,6 +20,7 @@ function Content({
   change,
   page,
   setPage,
+  discCategory
 }) {
   return (
     <div>
@@ -47,6 +48,7 @@ function Content({
             setDiscs={setDiscs}
             w3_open={w3_open}
             w3_close={w3_close}
+            discCategory={discCategory}
           />
         </Route>
       </Switch>

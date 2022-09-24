@@ -7,7 +7,7 @@ import SmallHeader from "./SmallHeader";
 import ReactPaginate from "react-paginate";
 import Footer from "./Footer";
 
-function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change }) {
+function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change, discCategory }) {
   const [pageCount, setPageCount] = useState(0);
   let { category_slug } = useParams();
 
@@ -57,6 +57,7 @@ function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change }) {
           width: "fit-content",
         }}
       >
+      <h1 className="text-left" style={{fontFamily: "copperplate"}}>{discCategory}</h1>
         <div
           id="discContainer"
           className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3"
