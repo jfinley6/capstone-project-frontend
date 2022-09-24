@@ -15,47 +15,48 @@ function Discs({
   w3_open,
   change,
   discCategory,
+  sortType,
+  setSortType
 }) {
   const [pageCount, setPageCount] = useState(0);
-  // const [sortType, setSortType] = useState("name");
+  
 
   let { category_slug } = useParams();
 
-  // useEffect(() => {
-  //   const sortArray = type => {
-  //     const types = {
-  //       name: "name",
-  //       speed: "speed",
-  //       glide: "glide",
-  //       turn: "turn",
-  //       fade: "fade"
-  //     }
-  //     const sortProperty = types[type]
-  //     const sorted = [...discs].sort((a, b) => b[sortProperty] - a[sortProperty])
-  //     setDiscs(sorted)
-  //   }
-
-  //   sortArray(sortType)
-  // },[sortType])
-
   useEffect(() => {
     document.querySelector("#scrollTop").style.display = "none";
-    if (category_slug === "all") {
-      axios.get(`http://localhost:3001/all/${page}`).then((response) => {
-        setDiscs(response.data.discs);
+    axios.get(`http://localhost:3001/sort/${category_slug}/${sortType}/${page}`)
+    .then(response => {
+      setDiscs(response.data.discs)
+      if (category_slug === "all") {
         setPageCount(Math.ceil(response.data.total / 24 - 2));
-        document.querySelector("#scrollTop").style.display = "";
-      });
-    } else {
-      axios
-        .get(`http://localhost:3001/category/${category_slug}/${page}`)
-        .then((response) => {
-          setDiscs(response.data.discs);
-          setPageCount(Math.floor(response.data.total / 24));
-          document.querySelector("#scrollTop").style.display = "";
-        });
-    }
-  }, [change, page]);
+      }
+      else {
+        setPageCount(Math.floor(response.data.total / 24));
+      }
+      document.querySelector("#scrollTop").style.display = "";
+    })
+
+  },[sortType, page, change])
+
+  // useEffect(() => {
+  //   document.querySelector("#scrollTop").style.display = "none";
+  //   if (category_slug === "all") {
+  //     axios.get(`http://localhost:3001/all/${page}`).then((response) => {
+  //       setDiscs(response.data.discs);
+  //       setPageCount(Math.ceil(response.data.total / 24 - 2));
+  //       document.querySelector("#scrollTop").style.display = "";
+  //     });
+  //   } else {
+  //     axios
+  //       .get(`http://localhost:3001/category/${category_slug}/${page}`)
+  //       .then((response) => {
+  //         setDiscs(response.data.discs);
+  //         setPageCount(Math.floor(response.data.total / 24));
+  //         document.querySelector("#scrollTop").style.display = "";
+  //       });
+  //   }
+  // }, [change, page]);
 
   const handlePageClick = (event) => {
     if (page <= pageCount) {
@@ -82,13 +83,16 @@ function Discs({
         <h1 className="text-left" style={{ fontFamily: "copperplate" }}>
           {discCategory}
         </h1>
-        {/* <select onChange={(e) => setSortType(e.target.value)}>
-          <option value="name">Name</option>
-          <option value="speed">Speed</option>
-          <option value="glide">Glide</option>
-          <option value="turn">Turn</option>
-          <option value="fade">Fade</option>
-        </select> */}
+        <div className="box mt-2 mb-3 d-flex flex-column align-items-start" style={{ fontFamily: "copperplate" }}>
+        <label>Sort by:</label>
+          <select className="rounded bg-warning text-dark" id="selectSort" onChange={(e) => setSortType(e.target.value)}>
+            <option value="name">Name</option>
+            <option value="speed">Speed</option>
+            <option value="glide">Glide</option>
+            <option value="turn">Turn</option>
+            <option value="fade">Fade</option>
+          </select>
+        </div>
         <div
           id="discContainer"
           className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3"
