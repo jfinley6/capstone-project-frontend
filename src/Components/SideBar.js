@@ -11,7 +11,8 @@ function SideBar({
   setChange,
   setPage,
   cartNumber,
-  setDiscCategory
+  setDiscCategory,
+  setSortType
 }) {
   const history = useHistory();
 
@@ -127,6 +128,8 @@ function SideBar({
               history.push("/category/all");
               setChange((current) => !current);
               setPage(1);
+              setSortType("name")
+              document.querySelector("#selectSort").value = "name";
             }}
             className="w3-bar-item w3-button"
           >
@@ -139,6 +142,8 @@ function SideBar({
               history.push("/category/putter");
               setChange((current) => !current);
               setPage(1);
+              setSortType("name");
+              document.querySelector("#selectSort").value = "name";
             }}
             className="w3-bar-item w3-button"
           >
@@ -151,6 +156,8 @@ function SideBar({
               history.push("/category/approach");
               setChange((current) => !current);
               setPage(1);
+              setSortType("name");
+              document.querySelector("#selectSort").value = "name";
             }}
             className="w3-bar-item w3-button"
           >
@@ -163,6 +170,8 @@ function SideBar({
               history.push("/category/midrange");
               setChange((current) => !current);
               setPage(1);
+              setSortType("name");
+              document.querySelector("#selectSort").value = "name";
             }}
             className="w3-bar-item w3-button"
           >
@@ -175,6 +184,8 @@ function SideBar({
               history.push("/category/control-driver");
               setChange((current) => !current);
               setPage(1);
+              setSortType("name");
+              document.querySelector("#selectSort").value = "name";
             }}
             className="w3-bar-item w3-button"
           >
@@ -187,6 +198,8 @@ function SideBar({
               history.push("/category/hybrid-driver");
               setChange((current) => !current);
               setPage(1);
+              setSortType("name");
+              document.querySelector("#selectSort").value = "name";
             }}
             className="w3-bar-item w3-button"
           >
@@ -199,6 +212,8 @@ function SideBar({
               history.push("/category/distance-driver");
               setChange((current) => !current);
               setPage(1);
+              setSortType("name");
+              document.querySelector("#selectSort").value = "name";
             }}
             className="w3-bar-item w3-button"
           >
