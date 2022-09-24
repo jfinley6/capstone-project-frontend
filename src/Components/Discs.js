@@ -19,7 +19,8 @@ function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change }) {
       .get(`http://localhost:3001/all/${page}`)
       .then(response => {
         setDiscs(response.data.discs)
-        setPageCount(Math.ceil(response.data.total / 24));
+        console.log(response.data.total / 24)
+        setPageCount(Math.ceil((response.data.total / 24) - 2));
         document.querySelector("#scrollTop").style.display = "";
       })
     } else {
@@ -27,7 +28,7 @@ function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change }) {
         .get(`http://localhost:3001/category/${category_slug}/${page}`)
         .then((response) => {
           setDiscs(response.data.discs);
-          setPageCount(Math.ceil(response.data.total / 24));
+          setPageCount(Math.floor(response.data.total / 24));
           document.querySelector("#scrollTop").style.display = "";
         });
     }
