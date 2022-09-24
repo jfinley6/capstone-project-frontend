@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Registration from "./auth/Registration";
 import Login from "./auth/Login";
 import { useHistory } from "react-router-dom";
@@ -6,6 +6,7 @@ import SmallHeader from "./SmallHeader";
 
 function Home({ handleLogin, screen, setScreen, w3_open, w3_close }) {
   const history = useHistory();
+
 
   function handleSuccessfulAuth(data) {
     handleLogin(data);

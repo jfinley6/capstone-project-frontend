@@ -5,6 +5,7 @@ import "/Users/johnfinley/Development/code/phase-5/capstone-frontend/src/Discs.c
 import { useParams } from "react-router-dom";
 import SmallHeader from "./SmallHeader";
 import ReactPaginate from "react-paginate";
+import Footer from "./Footer";
 
 function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change }) {
   const [pageCount, setPageCount] = useState(0);
@@ -85,6 +86,7 @@ function Discs({ page, setPage, discs, setDiscs, w3_open, w3_close, change }) {
             />
           ) : null}
         </div>
+        <Footer />
       </div>
     </div>
   );

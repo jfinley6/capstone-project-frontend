@@ -10,7 +10,7 @@ function SideBar({
   setDiscs,
   setChange,
   setPage,
-  cartNumber
+  cartNumber,
 }) {
   const history = useHistory();
 
@@ -34,9 +34,14 @@ function SideBar({
           onClick={() => w3_close()}
           className="fa fa-remove w3-hide-large w3-button w3-display-topright"
         ></i>
-        <h3 onClick={() => {
-          window.scrollTo(0, 0);
-          history.push("/")}} className="w3-wide" role="button">
+        <h3
+          onClick={() => {
+            history.push("/");
+            window.scrollTo(0, 0);
+          }}
+          className="w3-wide"
+          role="button"
+        >
           <b>Out of Bounds Discs</b>
         </h3>
       </div>
@@ -70,7 +75,8 @@ function SideBar({
             <button
               onClick={() => {
                 setScreen(true);
-                history.push("/authenticate");
+                history.push("/authenticate")
+                window.scrollTo(0, 0);
               }}
               className="w-75 btn btn-primary text-center mb-2"
             >
@@ -80,6 +86,7 @@ function SideBar({
               onClick={() => {
                 setScreen(false);
                 history.push("/authenticate");
+                window.scrollTo({ top: 0, left: 0, behavior: "auto" });
               }}
               className="w-75 btn btn-outline-primary text-center"
             >
@@ -195,7 +202,7 @@ function SideBar({
 
       <a
         href="#footer"
-        onClick={() => history.push("/")}
+        onClick={() => document.getElementById("footer").scrollIntoView()}
         className="w3-bar-item w3-button w3-padding text-center"
       >
         Contact

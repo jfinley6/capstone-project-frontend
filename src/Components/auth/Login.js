@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Footer from "../Footer";
 
 function Login({ handleSuccessfulAuth, setScreen }) {
   const [registration, setRegistration] = useState({
@@ -56,7 +57,7 @@ function Login({ handleSuccessfulAuth, setScreen }) {
     <form
       onSubmit={handleSubmit}
       id="loginForm"
-      className="d-flex flex-column w-50"
+      className="d-flex flex-column w-75"
     >
       <div className="form-group d-flex flex-column align-items-center">
         <label htmlFor="exampleInputEmail1">Email address</label>
@@ -94,7 +95,7 @@ function Login({ handleSuccessfulAuth, setScreen }) {
           {error}
         </div>
       )}
-      <div className="d-flex flex-column align-items-center mt-2">
+      <div className="d-flex flex-column align-items-center mt-2 mb-5">
         <div>Don't have an account?</div>
         <button
           onClick={(e) => {
@@ -107,6 +108,7 @@ function Login({ handleSuccessfulAuth, setScreen }) {
           Sign Up Here
         </button>
       </div>
+      <Footer />
     </form>
   );
 }
