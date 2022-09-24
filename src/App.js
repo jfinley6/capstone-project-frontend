@@ -16,6 +16,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [cartNumber, setCartNumber] = useState(0)
   const [discCategory, setDiscCategory] = useState("All Discs")
+  const [sortType, setSortType] = useState("name");
 
   const history = useHistory();
 
@@ -107,6 +108,7 @@ function App() {
           setPage={setPage}
           cartNumber={cartNumber}
           setDiscCategory={setDiscCategory}
+          setSortType={setSortType}
         />
         <Content
           discs={discs}
@@ -123,6 +125,8 @@ function App() {
           page={page}
           setPage={setPage}
           discCategory={discCategory}
+          sortType={sortType}
+          setSortType={setSortType}
         />
       </div> : null}
     </>
