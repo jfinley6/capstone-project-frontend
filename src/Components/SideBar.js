@@ -103,7 +103,7 @@ function SideBar({
             <i role="button" className="fa" style={{ fontSize: "24px" }}>
               &#xf07a;
             </i>
-            <span className="badge badge-warning mr-1" id="lblCartCount">
+            <span className="rounded-pill badge-warning mr-1" id="lblCartCount">
               {" "}
               {cartNumber}{" "}
             </span>

@@ -17,8 +17,17 @@ function App() {
   const [cartNumber, setCartNumber] = useState(0)
   const [discCategory, setDiscCategory] = useState("All Discs")
   const [sortType, setSortType] = useState("name");
+  const [cart, setCart] = useState([])
 
   const history = useHistory();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/shopping_cart", {
+        withCredentials: true,
+      })
+      .then((response) => setCartNumber(response.data.total_items));
+  },[])
 
   useEffect(() => {
     axios.get("http://localhost:3001").then((response) => {
