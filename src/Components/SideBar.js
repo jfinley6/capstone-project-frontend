@@ -12,7 +12,8 @@ function SideBar({
   setPage,
   cartNumber,
   setDiscCategory,
-  setSortType
+  setSortType,
+  handleShow
 }) {
   const history = useHistory();
 
@@ -100,7 +101,7 @@ function SideBar({
         )}
         <header className="w3-container w3-xlarge mt-2">
           <p className="w3-left mb-2 mt-1">
-            <i role="button" className="fa" style={{ fontSize: "24px" }}>
+            <i onClick={handleShow} role="button" className="fa" style={{ fontSize: "24px" }}>
               &#xf07a;
             </i>
             <span className="rounded-pill badge-warning mr-1" id="lblCartCount">
