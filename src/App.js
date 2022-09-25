@@ -5,6 +5,7 @@ import "./App.css";
 
 import Content from "./Components/Content";
 import SideBar from "./Components/SideBar";
+import CartModal from "./Components/CartModal";
 
 function App() {
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
@@ -12,12 +13,13 @@ function App() {
   const [discs, setDiscs] = useState([]);
   const [screen, setScreen] = useState(true);
   const [heroku, setHeroku] = useState("not ready");
-  const [change, setChange] = useState(false)
+  const [change, setChange] = useState(false);
   const [page, setPage] = useState(1);
-  const [cartNumber, setCartNumber] = useState(0)
-  const [discCategory, setDiscCategory] = useState("All Discs")
+  const [cartNumber, setCartNumber] = useState(0);
+  const [discCategory, setDiscCategory] = useState("All Discs");
   const [sortType, setSortType] = useState("name");
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
+  const [show, setShow] = useState(false);
 
   const history = useHistory();
 
@@ -26,8 +28,14 @@ function App() {
       .get("http://localhost:3001/shopping_cart", {
         withCredentials: true,
       })
-      .then((response) => setCartNumber(response.data.total_items));
-  },[])
+      .then((response) => {
+        if (response.data.shopping_cart === false) {
+          return;
+        } else {
+          setCartNumber(response.data.total_items);
+        }
+      });
+  }, [loggedInStatus]);
 
   useEffect(() => {
     axios.get("http://localhost:3001").then((response) => {
@@ -71,7 +79,8 @@ function App() {
       })
       .then(() => {
         setLoggedInStatus("NOT_LOGGED_IN");
-        setUser({});;
+        setUser({});
+        setCartNumber(0);
       })
       .catch((error) => console.log(error));
   }
@@ -85,7 +94,8 @@ function App() {
     // document.getElementById("myOverlay").style.display = "none";
   }
 
-  
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   // I'm using "click" but it works with any event
   document.addEventListener("click", (event) => {
@@ -94,50 +104,53 @@ function App() {
     const isClickInside = specifiedElement.contains(event.target);
     const isClickInside2 = specifiedElement2.contains(event.target);
 
-
     if (!isClickInside && !isClickInside2) {
-      w3_close()
-      w3_close()
+      w3_close();
+      w3_close();
     } else if (isClickInside2) {
-      w3_open()
+      w3_open();
     }
   });
 
   return (
     <>
-      {heroku === "ready" ? <div className="App d-flex flex-column justify-content-center">
-        <SideBar
-          w3_close={w3_close}
-          user={user}
-          loggedInStatus={loggedInStatus}
-          handleLogout={handleLogout}
-          setScreen={setScreen}
-          setDiscs={setDiscs}
-          setChange={setChange}
-          setPage={setPage}
-          cartNumber={cartNumber}
-          setDiscCategory={setDiscCategory}
-          setSortType={setSortType}
-        />
-        <Content
-          discs={discs}
-          setDiscs={setDiscs}
-          loggedInStatus={loggedInStatus}
-          user={user}
-          w3_close={w3_close}
-          w3_open={w3_open}
-          screen={screen}
-          setScreen={setScreen}
-          setLoggedInStatus={setLoggedInStatus}
-          handleLogin={handleLogin}
-          change={change}
-          page={page}
-          setPage={setPage}
-          discCategory={discCategory}
-          sortType={sortType}
-          setSortType={setSortType}
-        />
-      </div> : null}
+      {heroku === "ready" ? (
+        <div className="App d-flex flex-column justify-content-center">
+          <SideBar
+            w3_close={w3_close}
+            user={user}
+            loggedInStatus={loggedInStatus}
+            handleLogout={handleLogout}
+            setScreen={setScreen}
+            setDiscs={setDiscs}
+            setChange={setChange}
+            setPage={setPage}
+            cartNumber={cartNumber}
+            setDiscCategory={setDiscCategory}
+            setSortType={setSortType}
+            handleShow={handleShow}
+          />
+          <Content
+            discs={discs}
+            setDiscs={setDiscs}
+            loggedInStatus={loggedInStatus}
+            user={user}
+            w3_close={w3_close}
+            w3_open={w3_open}
+            screen={screen}
+            setScreen={setScreen}
+            setLoggedInStatus={setLoggedInStatus}
+            handleLogin={handleLogin}
+            change={change}
+            page={page}
+            setPage={setPage}
+            discCategory={discCategory}
+            sortType={sortType}
+            setSortType={setSortType}
+          />
+          <CartModal handleClose={handleClose} handleShow={handleShow} show={show} />
+        </div>
+      ) : null}
     </>
   );
 }
