@@ -46,81 +46,83 @@ function Registration({ handleSuccessfulAuth, setScreen }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="d-flex flex-column w-75">
-      <div className="form-group d-flex flex-column align-items-center">
-        <label htmlFor="InputUsername1">Username</label>
-        <input
-          type="username"
-          name="username"
-          className="form-control"
-          id="InputUsername1"
-          placeholder="Enter username"
-          value={username}
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-      </div>
-      <div className="form-group d-flex flex-column align-items-center">
-        <label htmlFor="InputEmail1">Email address</label>
-        <input
-          type="email"
-          name="email"
-          className="form-control"
-          id="InputEmail1"
-          placeholder="Enter email"
-          value={email}
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-      </div>
-      <div className="form-group d-flex flex-column align-items-center">
-        <label htmlFor="InputPassword1">Password</label>
-        <input
-          type="password"
-          name="password"
-          className="form-control"
-          id="InputPassword1"
-          placeholder="Password"
-          value={password}
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-      </div>
-      <div className="form-group d-flex flex-column align-items-center">
-        <label htmlFor="InputPassword1">Password Confirmation</label>
-        <input
-          type="password"
-          name="password_confirmation"
-          className="form-control"
-          id="InputPassword2"
-          placeholder="Password Confirmation"
-          value={password_confirmation}
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-      </div>
-      <button className="btn btn-primary mt-2" type="submit">
-        Sign Up
-      </button>
-      <div className="d-flex flex-column align-items-center mt-2 mb-5">
-        <div>Already Have An Account?</div>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setScreen(true);
-          }}
-          className="link-secondary btn btn-link"
-          style={{textDecoration: "none"}}
-        >
-          Login Here
+    <div className="d-flex flex-column w-75">
+      <form onSubmit={handleSubmit}>
+        <div className="form-group d-flex flex-column align-items-center">
+          <label htmlFor="InputUsername1">Username</label>
+          <input
+            type="username"
+            name="username"
+            className="form-control"
+            id="InputUsername1"
+            placeholder="Enter username"
+            value={username}
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
+        </div>
+        <div className="form-group d-flex flex-column align-items-center">
+          <label htmlFor="InputEmail1">Email address</label>
+          <input
+            type="email"
+            name="email"
+            className="form-control"
+            id="InputEmail1"
+            placeholder="Enter email"
+            value={email}
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
+        </div>
+        <div className="form-group d-flex flex-column align-items-center">
+          <label htmlFor="InputPassword1">Password</label>
+          <input
+            type="password"
+            name="password"
+            className="form-control"
+            id="InputPassword1"
+            placeholder="Password"
+            value={password}
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
+        </div>
+        <div className="form-group d-flex flex-column align-items-center">
+          <label htmlFor="InputPassword1">Password Confirmation</label>
+          <input
+            type="password"
+            name="password_confirmation"
+            className="form-control"
+            id="InputPassword2"
+            placeholder="Password Confirmation"
+            value={password_confirmation}
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
+        </div>
+        <button className="btn btn-primary mt-2" type="submit">
+          Sign Up
         </button>
-      </div>
+        <div className="d-flex flex-column align-items-center mt-2 mb-5">
+          <div>Already Have An Account?</div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setScreen(true);
+            }}
+            className="link-secondary btn btn-link"
+            style={{ textDecoration: "none" }}
+          >
+            Login Here
+          </button>
+        </div>
+      </form>
       <Footer />
-    </form>
+    </div>
   );
 }
 

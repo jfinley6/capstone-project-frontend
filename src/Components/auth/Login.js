@@ -54,62 +54,60 @@ function Login({ handleSuccessfulAuth, setScreen }) {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      id="loginForm"
-      className="d-flex flex-column w-75"
-    >
-      <div className="form-group d-flex flex-column align-items-center">
-        <label htmlFor="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          name="email"
-          className="form-control"
-          id="exampleInputEmail1"
-          placeholder="Enter email"
-          value={email}
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-      </div>
-      <div className="form-group d-flex flex-column align-items-center">
-        <label htmlFor="exampleInputPassword1">Password</label>
-        <input
-          type="password"
-          name="password"
-          className="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-          value={password}
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-      </div>
-      <button className="btn btn-primary mt-2" type="submit">
-        Login
-      </button>
-      {error === "" ? null : (
-        <div style={{ textAlign: "center" }} className="text-danger mt-2">
-          {error}
+    <div className="d-flex flex-column w-75">
+      <form onSubmit={handleSubmit} id="loginForm">
+        <div className="form-group d-flex flex-column align-items-center">
+          <label htmlFor="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            name="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            placeholder="Enter email"
+            value={email}
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
         </div>
-      )}
-      <div className="d-flex flex-column align-items-center mt-2 mb-5">
-        <div>Don't have an account?</div>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setScreen(false);
-          }}
-          className="link-secondary btn btn-link"
-          style={{textDecoration : "none"}}
-        >
-          Sign Up Here
+        <div className="form-group d-flex flex-column align-items-center">
+          <label htmlFor="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            name="password"
+            className="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            value={password}
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
+        </div>
+        <button className="btn btn-primary mt-2" type="submit">
+          Login
         </button>
-      </div>
+        {error === "" ? null : (
+          <div style={{ textAlign: "center" }} className="text-danger mt-2">
+            {error}
+          </div>
+        )}
+        <div className="d-flex flex-column align-items-center mt-2 mb-5">
+          <div>Don't have an account?</div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setScreen(false);
+            }}
+            className="link-secondary btn btn-link"
+            style={{ textDecoration: "none" }}
+          >
+            Sign Up Here
+          </button>
+        </div>
+      </form>
       <Footer />
-    </form>
+    </div>
   );
 }
 
