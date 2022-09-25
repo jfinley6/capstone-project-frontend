@@ -2,24 +2,27 @@ import React from 'react'
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function CartModal({handleShow, handleClose, show}) {
+function CartModal({handleClose, show, cartTotal}) {
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
+      <Modal centered show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Cart</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body
+          style={{
+            maxHeight: "calc(100vh - 210px)",
+            overflowY: "scroll",
+          }}
+        >
+         
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Subtotal: ${cartTotal === 0 ? "0.00" : cartTotal}
+        </Modal.Footer>
+        <Modal.Footer>
+          <Button variant="warning" onClick={handleClose}>
+            Checkout
           </Button>
         </Modal.Footer>
       </Modal>
