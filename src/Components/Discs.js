@@ -73,7 +73,7 @@ function Discs({
       <SmallHeader w3_open={w3_open} />
       <div
         id="disc"
-        className="container-fluid bg-trasparent mt-5 p-5"
+        className="container-fluid bg-trasparent mt-lg-0 mt-sm-5 p-sm-5"
         style={{
           position: "relative",
           marginLeft: "250px",
