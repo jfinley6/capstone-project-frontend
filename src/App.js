@@ -20,6 +20,7 @@ function App() {
   const [sortType, setSortType] = useState("name");
   const [cart, setCart] = useState([]);
   const [show, setShow] = useState(false);
+  const [cartTotal, setCartTotal] = useState(0);
 
   const history = useHistory();
 
@@ -91,7 +92,6 @@ function App() {
 
   function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
-    // document.getElementById("myOverlay").style.display = "none";
   }
 
   const handleClose = () => setShow(false);
@@ -148,7 +148,12 @@ function App() {
             sortType={sortType}
             setSortType={setSortType}
           />
-          <CartModal handleClose={handleClose} handleShow={handleShow} show={show} />
+          <CartModal
+            handleClose={handleClose}
+            handleShow={handleShow}
+            show={show}
+            cartTotal={cartTotal}
+          />
         </div>
       ) : null}
     </>
