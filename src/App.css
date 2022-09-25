@@ -96,3 +96,7 @@
 .box select option {
   padding: 30px;
 }
+
+#smallHeader {
+  z-index: 2
+}
