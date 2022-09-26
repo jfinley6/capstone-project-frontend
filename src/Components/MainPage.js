@@ -8,6 +8,9 @@ import Footer from "./Footer";
 function MainPage({ w3_open, w3_close, setDiscCategory, setDiscs, setChange, setPage, setSortType }) {
   const [mainPageDiscs, setMainPageDiscs] = useState([]);
   const history = useHistory()
+  const current = new Date()
+  let longMonth = current.toLocaleString("en-us", { month: "long" });
+  const date = `${current.getDate()}, ${current.getFullYear()}`;
 
   useEffect(() => {
     document.getElementById("mainPage").style.display = "none";
@@ -72,6 +75,9 @@ function MainPage({ w3_open, w3_close, setDiscCategory, setDiscs, setChange, set
         </div>
 
         {/* <!-- Product grid --> */}
+        <h1 className="mt-3"><strong>Discs of the Day</strong></h1>
+        <h6><strong>{longMonth} {date}</strong></h6>
+        {/* <h6 className="mt-1"><strong>Enjoy 10% off today only!</strong></h6> */}
         <div className="w3-row w3-grayscale mt-4">{discPreviews}</div>
 
         {/* <!-- Footer --> */}
