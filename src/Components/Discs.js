@@ -16,7 +16,11 @@ function Discs({
   change,
   discCategory,
   sortType,
-  setSortType
+  setSortType,
+  setCart,
+  cart,
+  user,
+  addToCart
 }) {
   const [pageCount, setPageCount] = useState(0);
   
@@ -39,25 +43,6 @@ function Discs({
 
   },[sortType, page, change])
 
-  // useEffect(() => {
-  //   document.querySelector("#scrollTop").style.display = "none";
-  //   if (category_slug === "all") {
-  //     axios.get(`http://localhost:3001/all/${page}`).then((response) => {
-  //       setDiscs(response.data.discs);
-  //       setPageCount(Math.ceil(response.data.total / 24 - 2));
-  //       document.querySelector("#scrollTop").style.display = "";
-  //     });
-  //   } else {
-  //     axios
-  //       .get(`http://localhost:3001/category/${category_slug}/${page}`)
-  //       .then((response) => {
-  //         setDiscs(response.data.discs);
-  //         setPageCount(Math.floor(response.data.total / 24));
-  //         document.querySelector("#scrollTop").style.display = "";
-  //       });
-  //   }
-  // }, [change, page]);
-
   const handlePageClick = (event) => {
     if (page <= pageCount) {
       setPage(event.selected + 1);
@@ -65,7 +50,7 @@ function Discs({
   };
 
   let discSelection = discs.map((disc) => {
-    return <DiscPreview key={disc.id} disc={disc} />;
+    return <DiscPreview key={disc.id} disc={disc} setCart={setCart} cart={cart} user={user} addToCart={addToCart} />;
   });
 
   return (
