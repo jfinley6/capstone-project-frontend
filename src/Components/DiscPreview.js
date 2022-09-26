@@ -1,6 +1,6 @@
 import React from "react";
 
-function DiscPreview({ disc }) {
+function DiscPreview({ disc, setCart, cart, user, addToCart }) {
   const {
     picture_url,
     brand,
@@ -12,6 +12,13 @@ function DiscPreview({ disc }) {
     category,
     price,
   } = disc;
+
+  const isFound = cart.some((element) => {
+    if (element.id === disc.id) {
+      return true;
+    }
+    return false;
+  });  
 
   return (
     <div className="col hp">
@@ -87,12 +94,21 @@ function DiscPreview({ disc }) {
           </h5>
 
           <div className="d-grid gap-2 my-4">
-            <button
-              onClick={() => console.log("Add to Cart")}
-              className="btn btn-warning bold-btn"
-            >
-              Add to cart
-            </button>
+            {isFound ? (
+              <button
+                onClick={() => console.log(cart.includes(disc.id))}
+                className="btn btn-warning bold-btn"
+              >
+                Remove From Cart
+              </button>
+            ) : (
+              <button
+                onClick={() => addToCart(disc.id)}
+                className="btn btn-warning bold-btn"
+              >
+                Add to cart
+              </button>
+            )}
           </div>
           <div className="clearfix mb-1 d-flex justify-content-center">
             <span className="float-end">
