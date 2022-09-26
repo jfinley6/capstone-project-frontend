@@ -29,10 +29,10 @@ function Discs({
     .then(response => {
       setDiscs(response.data.discs)
       if (category_slug === "all") {
-        setPageCount(Math.ceil(response.data.total / 24 - 2));
+        setPageCount(Math.ceil(response.data.total / 24 ));
       }
       else {
-        setPageCount(Math.floor(response.data.total / 24));
+        setPageCount(Math.floor(response.data.total / 24 + 1));
       }
       document.querySelector("#scrollTop").style.display = "";
     })
