@@ -25,6 +25,9 @@ function Content({
   setSortType,
   setDiscCategory,
   setChange,
+  setCart,
+  cart,
+  addToCart
 }) {
   return (
     <div>
@@ -63,6 +66,10 @@ function Content({
             discCategory={discCategory}
             sortType={sortType}
             setSortType={setSortType}
+            user={user}
+            setCart={setCart}
+            cart={cart}
+            addToCart={addToCart}
           />
         </Route>
       </Switch>
