@@ -89,7 +89,16 @@ function App() {
   }
 
   function addToCart(disc_id) {
+    axios.post(`http://localhost:3001/new/${user.id}/${disc_id}`)
+    .then(response => {
+      setCartNumber(cartNumber + 1)
+      setCart(cart => [...cart, response.data])
+      setCartTotal(cartTotal + response.data.price)
+    })
+  }
 
+  function cartRemoveAll() {
+    console.log("hello")
   }
 
   function w3_open() {
@@ -155,12 +164,16 @@ function App() {
             setSortType={setSortType}
             setDiscCategory={setDiscCategory}
             setChange={setChange}
+            setCart={setCart}
+            cart={cart}
+            addToCart={addToCart}
           />
           <CartModal
             handleClose={handleClose}
             handleShow={handleShow}
             show={show}
             cartTotal={cartTotal}
+            cartRemoveAll={cartRemoveAll}
           />
         </div>
       ) : null}
