@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import SmallHeader from "./SmallHeader";
 import MainPageDiscPreview from "./MainPageDiscPreview";
 import Footer from "./Footer";
 
-function MainPage({ w3_open, w3_close }) {
+function MainPage({ w3_open, w3_close, setDiscCategory, setDiscs, setChange, setPage, setSortType }) {
   const [mainPageDiscs, setMainPageDiscs] = useState([]);
+  const history = useHistory()
 
   useEffect(() => {
     document.getElementById("mainPage").style.display = "none";
@@ -54,7 +56,15 @@ function MainPage({ w3_open, w3_close }) {
             <h1 className="w3-hide-large w3-hide-medium">New arrivals</h1>
             <h1 className="w3-hide-small">COLLECTION 2022</h1>
             <p>
-              <button className="w3-button w3-black w3-padding-large w3-large">
+              <button onClick={() => {
+                setDiscCategory("All Discs");
+                setDiscs([]);
+                history.push("/category/all");
+                setChange((current) => !current);
+                setPage(1);
+                setSortType("name");
+                document.querySelector("#selectSort").value = "name";
+              }} className="w3-button w3-black w3-padding-large w3-large">
                 SHOP NOW
               </button>
             </p>
