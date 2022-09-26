@@ -22,13 +22,23 @@ function Content({
   setPage,
   discCategory,
   sortType,
-  setSortType
+  setSortType,
+  setDiscCategory,
+  setChange,
 }) {
   return (
     <div>
       <Switch>
         <Route exact path="/">
-          <MainPage w3_open={w3_open} w3_close={w3_close} />
+          <MainPage
+            w3_open={w3_open}
+            w3_close={w3_close}
+            setDiscCategory={setDiscCategory}
+            setDiscs={setDiscs}
+            setChange={setChange}
+            setPage={setPage}
+            setSortType={setSortType}
+          />
         </Route>
         <Route exact path="/authenticate">
           <Home

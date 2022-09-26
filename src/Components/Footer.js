@@ -39,22 +39,6 @@ function Footer() {
               Find store
             </button>
           </p>
-          <p>
-            <button
-              style={{
-                textDecoration: "none",
-                background: "none",
-                color: "inherit",
-                border: "none",
-                padding: "0",
-                font: "inherit",
-                cursor: "pointer",
-                outline: "inherit",
-              }}
-            >
-              Help
-            </button>
-          </p>
         </div>
 
         <div className="w3-col s4 d-flex flex-column ">
