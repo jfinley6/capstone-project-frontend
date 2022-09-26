@@ -12,10 +12,11 @@ function MainPageDiscPreview({disc}) {
             </button>
           </div>
         </div>
-        <p>
+        <p className='mb-0'>
           {disc.name} | 
-          <b> {disc.price}</b>
+          <b> ${disc.price}</b>
         </p>
+        <p className='mb-2'><b>{disc.brand}</b></p>
       </div>
     </div>
   );
