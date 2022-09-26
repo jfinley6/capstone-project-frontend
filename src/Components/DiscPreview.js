@@ -83,7 +83,7 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
               <br />
               <p
                 className="mt-2"
-                style={{ whiteSpace: "nowrap", fontSize: "1em" }}
+                style={{ whiteSpace: "nowrap", width: "100%" }}
               >
                 Speed: <span style={{ fontWeight: "bold" }}>{speed}</span> |
                 Glide: <span style={{ fontWeight: "bold" }}>{glide}</span> |
