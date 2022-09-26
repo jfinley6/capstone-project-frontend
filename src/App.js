@@ -127,9 +127,17 @@ function App() {
   function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
   }
+  function handleClose() {
+    setShow(false)
+  }
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  function handleShow() {
+    if (loggedInStatus === "NOT_LOGGED_IN") {
+      return
+    } else {
+      setShow(true);
+    }
+  }
 
   // I'm using "click" but it works with any event
   document.addEventListener("click", (event) => {
