@@ -97,8 +97,27 @@ function App() {
     })
   }
 
+  let disc = cart.find(element => element.id === 1)
+  
+
   function cartRemoveAll() {
-    console.log("hello")
+    axios.delete(`http://localhost:3001/delete/${user.id}`)
+    .then(() => {
+      setCartNumber(0)
+      setCart([])
+      setCartTotal(0)
+    })
+  }
+
+  function removeCartItem(disc_id) {
+    axios.delete(`http://localhost:3001/destroy/${user.id}/${disc_id}`)
+    .then(() => {
+      setCartNumber(cartNumber - 1)
+      disc = cart.find((element) => element.id === 1);
+      setCartTotal(cartTotal - disc.price)
+      const newDiscs = cart.filter((item) => item.id !== disc.id);
+      setCart(newDiscs);
+    })
   }
 
   function w3_open() {
@@ -167,6 +186,7 @@ function App() {
             setCart={setCart}
             cart={cart}
             addToCart={addToCart}
+            removeCartItem={removeCartItem}
           />
           <CartModal
             handleClose={handleClose}

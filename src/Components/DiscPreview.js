@@ -1,6 +1,6 @@
 import React from "react";
 
-function DiscPreview({ disc, setCart, cart, user, addToCart }) {
+function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
   const {
     picture_url,
     brand,
@@ -96,7 +96,7 @@ function DiscPreview({ disc, setCart, cart, user, addToCart }) {
           <div className="d-grid gap-2 my-4">
             {isFound ? (
               <button
-                onClick={() => console.log(cart.includes(disc.id))}
+                onClick={() => removeCartItem(disc.id)}
                 className="btn btn-warning bold-btn"
               >
                 Remove From Cart

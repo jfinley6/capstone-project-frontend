@@ -27,7 +27,8 @@ function Content({
   setChange,
   setCart,
   cart,
-  addToCart
+  addToCart,
+  removeCartItem
 }) {
   return (
     <div>
@@ -70,6 +71,7 @@ function Content({
             setCart={setCart}
             cart={cart}
             addToCart={addToCart}
+            removeCartItem={removeCartItem}
           />
         </Route>
       </Switch>

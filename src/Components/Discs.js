@@ -20,7 +20,8 @@ function Discs({
   setCart,
   cart,
   user,
-  addToCart
+  addToCart,
+  removeCartItem
 }) {
   const [pageCount, setPageCount] = useState(0);
   
@@ -50,7 +51,7 @@ function Discs({
   };
 
   let discSelection = discs.map((disc) => {
-    return <DiscPreview key={disc.id} disc={disc} setCart={setCart} cart={cart} user={user} addToCart={addToCart} />;
+    return <DiscPreview key={disc.id} disc={disc} setCart={setCart} cart={cart} user={user} addToCart={addToCart} removeCartItem = {removeCartItem} />;
   });
 
   return (
