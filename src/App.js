@@ -147,6 +147,8 @@ function App() {
             discCategory={discCategory}
             sortType={sortType}
             setSortType={setSortType}
+            setDiscCategory={setDiscCategory}
+            setChange={setChange}
           />
           <CartModal
             handleClose={handleClose}
