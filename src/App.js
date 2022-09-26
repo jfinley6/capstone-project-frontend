@@ -34,6 +34,8 @@ function App() {
           return;
         } else {
           setCartNumber(response.data.total_items);
+          setCartTotal(response.data.total_price)
+          setCart(response.data.discs)
         }
       });
   }, [loggedInStatus]);
@@ -84,6 +86,10 @@ function App() {
         setCartNumber(0);
       })
       .catch((error) => console.log(error));
+  }
+
+  function addToCart(disc_id) {
+
   }
 
   function w3_open() {
