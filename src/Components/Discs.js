@@ -24,8 +24,8 @@ function Discs({
   removeCartItem
 }) {
   const [pageCount, setPageCount] = useState(0);
+  const [loading, setLoading] = useState(true)
   
-
   let { category_slug } = useParams();
 
   useEffect(() => {
@@ -33,6 +33,7 @@ function Discs({
     axios.get(`http://localhost:3001/sort/${category_slug}/${sortType}/${page}`)
     .then(response => {
       setDiscs(response.data.discs)
+      setLoading(false)
       if (category_slug === "all") {
         setPageCount(Math.ceil(response.data.total / 24 ));
       }
@@ -57,7 +58,7 @@ function Discs({
   return (
     <div id="scrollTop">
       <SmallHeader w3_open={w3_open} />
-      <div
+      {loading === true ? <div></div> : <div
         id="disc"
         className="container-fluid bg-trasparent mt-lg-0 mt-sm-5 mt-xs-5 p-xs-5 pt-sm-5"
         style={{
@@ -110,7 +111,7 @@ function Discs({
           ) : null}
         </div>
         <Footer />
-      </div>
+      </div>}
     </div>
   );
 }
