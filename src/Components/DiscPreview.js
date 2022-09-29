@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
   const {
@@ -13,6 +14,8 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
     price,
   } = disc;
 
+  const history = useHistory()
+
   const isFound = cart.some((element) => {
     if (element.id === disc.id) {
       return true;
@@ -21,7 +24,7 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
   });  
 
   return (
-    <div className="col hp">
+    <div className="container-fluid col hp">
       <div className="card h-100 shadow">
         <div className="w-100 d-flex justify-content-between">
           <div className="label-top shadow-sm mx-1 my-1">
@@ -61,7 +64,7 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
             </button>
           </div>
         </div>
-        <div onClick={() => console.log(disc.id)}>
+        <div onClick={() => history.push(`/disc/${disc.name_slug}`, {state: disc})}>
           <img
             role="button"
             src={picture_url}
