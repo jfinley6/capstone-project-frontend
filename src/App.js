@@ -84,6 +84,7 @@ function App() {
         setLoggedInStatus("NOT_LOGGED_IN");
         setUser({});
         setCartNumber(0);
+        setCart([])
       })
       .catch((error) => console.log(error));
   }
@@ -96,9 +97,6 @@ function App() {
       setCartTotal(cartTotal + response.data.price)
     })
   }
-
-  let disc = cart.find(element => element.id === 1)
-  
 
   function cartRemoveAll() {
     axios.delete(`http://localhost:3001/delete/${user.id}`)
@@ -113,11 +111,21 @@ function App() {
     axios.delete(`http://localhost:3001/destroy/${user.id}/${disc_id}`)
     .then(() => {
       setCartNumber(cartNumber - 1)
-      disc = cart.find((element) => element.id === 1);
+      let disc = cart.find((element) => element.id === disc_id);
       setCartTotal(cartTotal - disc.price)
       const newDiscs = cart.filter((item) => item.id !== disc.id);
       setCart(newDiscs);
     })
+  }
+
+  function handleCheckout() {
+    if (cartNumber === 0) {
+      return
+    } else {
+      window.scrollTo(0,0)
+      setShow(false)
+      history.push("/checkout")
+    }
   }
 
   function w3_open() {
@@ -132,11 +140,9 @@ function App() {
   }
 
   function handleShow() {
-    if (loggedInStatus === "NOT_LOGGED_IN") {
-      return
-    } else {
+
       setShow(true);
-    }
+
   }
 
   // I'm using "click" but it works with any event
@@ -195,6 +201,8 @@ function App() {
             cart={cart}
             addToCart={addToCart}
             removeCartItem={removeCartItem}
+            cartTotal={cartTotal}
+            cartNumber={cartNumber}
           />
           <CartModal
             handleClose={handleClose}
@@ -202,6 +210,10 @@ function App() {
             show={show}
             cartTotal={cartTotal}
             cartRemoveAll={cartRemoveAll}
+            cart={cart}
+            removeCartItem={removeCartItem}
+            cartNumber={cartNumber}
+            handleCheckout={handleCheckout}
           />
         </div>
       ) : null}

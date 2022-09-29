@@ -5,6 +5,7 @@ import Discs from "./Discs";
 import { Switch, Route } from "react-router-dom";
 
 import Home from "./Home";
+import Checkout from "./Checkout";
 
 function Content({
   w3_open,
@@ -28,7 +29,9 @@ function Content({
   setCart,
   cart,
   addToCart,
-  removeCartItem
+  removeCartItem,
+  cartTotal,
+  cartNumber
 }) {
   return (
     <div>
@@ -73,6 +76,9 @@ function Content({
             addToCart={addToCart}
             removeCartItem={removeCartItem}
           />
+        </Route>
+        <Route exact path="/checkout">
+          <Checkout cart={cart} cartTotal={cartTotal} cartNumber={cartNumber}/>
         </Route>
       </Switch>
     </div>

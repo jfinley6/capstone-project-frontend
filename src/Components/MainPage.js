@@ -55,9 +55,10 @@ function MainPage({ w3_open, w3_close, setDiscCategory, setDiscs, setChange, set
             className="w3-display-topleft w3-text-white"
             style={{ padding: "24px 48px" }}
           >
-            <h1 className="w3-jumbo w3-hide-small">New arrivals</h1>
-            <h1 className="w3-hide-large w3-hide-medium">New arrivals</h1>
-            <h1 className="w3-hide-small">COLLECTION 2022</h1>
+            <h1 className="w3-jumbo w3-hide-small">Buy Online</h1>
+            <h1 className="w3-hide-large w3-hide-medium">Buy Online</h1>
+            <h1 className="w3-xxlarge w3-hide-small">Pick-Up in Store</h1>
+            <h1 className="w3-hide-large w3-hide-medium">Pick-Up in Store</h1>
             <p>
               <button onClick={() => {
                 setDiscCategory("All Discs");
