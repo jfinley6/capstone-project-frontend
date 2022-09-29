@@ -2,10 +2,12 @@ import React from "react";
 import MainPage from "./MainPage";
 import Discs from "./Discs";
 
+
 import { Switch, Route } from "react-router-dom";
 
 import Home from "./Home";
 import Checkout from "./Checkout";
+import DiscPage from "./DiscPage";
 
 function Content({
   w3_open,
@@ -79,6 +81,9 @@ function Content({
         </Route>
         <Route exact path="/checkout">
           <Checkout cart={cart} cartTotal={cartTotal} cartNumber={cartNumber}/>
+        </Route>
+        <Route exact path="/disc/:name">
+          <DiscPage addToCart={addToCart} removeCartItem={removeCartItem} cart={cart}/>        
         </Route>
       </Switch>
     </div>
