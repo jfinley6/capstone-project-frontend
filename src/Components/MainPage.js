@@ -79,7 +79,7 @@ function MainPage({ w3_open, w3_close, setDiscCategory, setDiscs, setChange, set
         <h1 className="mt-3"><strong>Discs of the Day</strong></h1>
         <h6><strong>{longMonth} {date}</strong></h6>
         {/* <h6 className="mt-1"><strong>Enjoy 10% off today only!</strong></h6> */}
-        <div className="w3-row w3-grayscale mt-4">{discPreviews}</div>
+        <div className="w3-row mt-4">{discPreviews}</div>
 
         {/* <!-- Footer --> */}
         <Footer />
