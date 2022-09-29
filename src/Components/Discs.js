@@ -81,7 +81,7 @@ function Discs({
         </div>
         <div
           id="discContainer"
-          className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3"
+          className="row row-cols-md-2 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 g-3"
         >
           {discSelection}
         </div>
