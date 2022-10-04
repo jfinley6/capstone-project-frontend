@@ -22,12 +22,14 @@ function MainPage({
 
   useEffect(() => {
     document.getElementById("mainPage").style.display = "none";
-    axios.get("http://localhost:3001/home_page").then((response) => {
-      if (response.status === 200) {
-        setMainPageDiscs(response.data);
-        document.getElementById("mainPage").style.display = "";
-      }
-    });
+    axios
+      .get("https://warm-journey-57671.herokuapp.com/home_page")
+      .then((response) => {
+        if (response.status === 200) {
+          setMainPageDiscs(response.data);
+          document.getElementById("mainPage").style.display = "";
+        }
+      });
   }, []);
 
   let discPreviews = mainPageDiscs.map((disc) => {

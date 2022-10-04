@@ -31,7 +31,9 @@ function Discs({
   useEffect(() => {
     document.querySelector("#scrollTop").style.display = "none";
     axios
-      .get(`http://localhost:3001/sort/${category_slug}/${sortType}/${page}`)
+      .get(
+        `https://warm-journey-57671.herokuapp.com/sort/${category_slug}/${sortType}/${page}`
+      )
       .then((response) => {
         setDiscs(response.data.discs);
         setLoading(false);

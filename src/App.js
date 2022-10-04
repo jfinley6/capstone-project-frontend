@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/shopping_cart", {
+      .get("https://warm-journey-57671.herokuapp.com/shopping_cart", {
         withCredentials: true,
       })
       .then((response) => {
@@ -51,7 +51,7 @@ function App() {
 
   function checkLoginStatus() {
     axios
-      .get("http://localhost:3001/logged_in", {
+      .get("https://warm-journey-57671.herokuapp.com/logged_in", {
         withCredentials: true,
       })
       .then((response) => {
@@ -77,7 +77,7 @@ function App() {
 
   function handleLogout() {
     axios
-      .delete("http://localhost:3001/logout", {
+      .delete("https://warm-journey-57671.herokuapp.com/logout", {
         withCredentials: true,
       })
       .then(() => {
@@ -92,7 +92,9 @@ function App() {
 
   function addToCart(disc_id) {
     axios
-      .post(`http://localhost:3001/new/${user.id}/${disc_id}`)
+      .post(
+        `https://warm-journey-57671.herokuapp.com/new/${user.id}/${disc_id}`
+      )
       .then((response) => {
         setCartNumber(cartNumber + 1);
         setCart((cart) => [...cart, response.data]);
@@ -101,16 +103,20 @@ function App() {
   }
 
   function cartRemoveAll() {
-    axios.delete(`http://localhost:3001/delete/${user.id}`).then(() => {
-      setCartNumber(0);
-      setCart([]);
-      setCartTotal(0);
-    });
+    axios
+      .delete(`https://warm-journey-57671.herokuapp.com/delete/${user.id}`)
+      .then(() => {
+        setCartNumber(0);
+        setCart([]);
+        setCartTotal(0);
+      });
   }
 
   function removeCartItem(disc_id) {
     axios
-      .delete(`http://localhost:3001/destroy/${user.id}/${disc_id}`)
+      .delete(
+        `https://warm-journey-57671.herokuapp.com/destroy/${user.id}/${disc_id}`
+      )
       .then(() => {
         setCartNumber(cartNumber - 1);
         let disc = cart.find((element) => element.id === disc_id);

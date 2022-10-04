@@ -23,7 +23,7 @@ function Registration({ handleSuccessfulAuth, setScreen }) {
   function handleSubmit(event) {
     axios
       .post(
-        "http://localhost:3001/registrations",
+        "https://warm-journey-57671.herokuapp.com/registrations",
         {
           user: {
             username: username,
