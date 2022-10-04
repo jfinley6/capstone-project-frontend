@@ -1,6 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
 
 function Footer() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [successfulMessage, setSuccessfulMessage] = useState(false)
+
+  const { name, email, subject, message } = form;
+
+  function handleFeedback(event) {
+    event.preventDefault()
+    axios.post("http://localhost:3001/feedbacks", 
+    {
+        message: {
+          name: name,
+          email: email,
+          subject: subject,
+          message: message
+        }
+    }).then(() => {
+      setForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      setSuccessfulMessage(true)
+    })
+
+    
+    
+  }
+
+  function handleChange(event) {
+  
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  }
+
   return (
     <footer className="w3-padding-64 w3-light-grey w3-small" id="footer">
       <div className="w3-row-padding d-flex justify-content-center">
@@ -44,23 +87,27 @@ function Footer() {
         <div className="w3-col s4 d-flex flex-column ">
           <h4>Contact</h4>
           <p>Questions? Go ahead.</p>
-          <form action="/action_page.php" target="_blank" rel="noreferrer">
+          <form action="/action_page.php" target="_blank" rel="noreferrer" onSubmit={handleFeedback}>
             <p>
               <input
                 className="w3-input w3-border"
                 type="text"
                 placeholder="Name"
-                name="Name"
+                name="name"
                 required
+                value={name}
+                onChange={handleChange}
               />
             </p>
             <p>
               <input
                 className="w3-input w3-border"
-                type="text"
+                type="email"
                 placeholder="Email"
-                name="Email"
+                name="email"
                 required
+                value={email}
+                onChange={handleChange}
               />
             </p>
             <p>
@@ -68,8 +115,10 @@ function Footer() {
                 className="w3-input w3-border"
                 type="text"
                 placeholder="Subject"
-                name="Subject"
+                name="subject"
                 required
+                value={subject}
+                onChange={handleChange}
               />
             </p>
             <p>
@@ -77,13 +126,16 @@ function Footer() {
                 className="w3-input w3-border"
                 type="text"
                 placeholder="Message"
-                name="Message"
+                name="message"
                 required
+                value={message}
+                onChange={handleChange}
               />
             </p>
             <button type="submit" className="w3-button w3-block w3-black">
               Send
             </button>
+            {successfulMessage === true ? <h6 className='mt-2 text-success'>Your message was successfully sent</h6> : null}
           </form>
         </div>
 
@@ -96,7 +148,7 @@ function Footer() {
             <i className="fa fa-fw fa-phone"></i> 707-338-3266
           </p>
           <p>
-            <i className="fa fa-fw fa-envelope"></i> johnfinley@gmail.com
+            <i className="fa fa-fw fa-envelope"></i> OutOfBoundsDiscs@gmail.com
           </p>
           {/* <h4 className="text-center">We accept</h4>
           <p>
@@ -105,18 +157,17 @@ function Footer() {
           <p className='mb-0'>
             <i className="fa fa-fw fa-credit-card"></i> Credit Card
           </p> */}
-            <hr
-              style={{
-                color: "black",
-                borderColor: "black",
-                height: "1px",
-                width: "40%",
-                margin: "0",
-                marginBottom: "10px",
-                marginTop: "7px"
-              }}
-            />
-
+          <hr
+            style={{
+              color: "black",
+              borderColor: "black",
+              height: "1px",
+              width: "40%",
+              margin: "0",
+              marginBottom: "10px",
+              marginTop: "7px",
+            }}
+          />
 
           <div className="d-flex justify-content-center">
             <a
