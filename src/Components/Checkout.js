@@ -29,7 +29,7 @@ function Checkout({ cart, cartTotal, cartNumber }) {
         style={{ marginLeft: "250px", marginTop: "70px" }}
       >
         <h1 className="text-left" style={{ fontFamily: "copperplate" }}>
-          Checkout
+          Reservation
         </h1>
         <div className="mr-0 w-75">
           <div className="container">
@@ -58,85 +58,13 @@ function Checkout({ cart, cartTotal, cartNumber }) {
                     </p>
                   </div>
                 </div>
-                <div className="col-50">
-                  <h3>Payment</h3>
-                  <label htmlFor="fname">Accepted Cards</label>
-                  <div className="icon-container">
-                    <i className="fa fa-cc-visa" style={{ color: "navy" }}></i>
-                    <i className="fa fa-cc-amex" style={{ color: "blue" }}></i>
-                    <i
-                      className="fa fa-cc-mastercard"
-                      style={{ color: "red" }}
-                    ></i>
-                    <i
-                      className="fa fa-cc-discover"
-                      style={{ color: "orange" }}
-                    ></i>
-                  </div>
-                  <label htmlFor="cname">Name on Card</label>
-                  <input
-                    type="text"
-                    id="cname"
-                    name="cardname"
-                    placeholder="John Doe"
-                    required
-                  />
-                  <label htmlFor="ccnum">Credit card number</label>
-                  <input
-                    type="text"
-                    id="ccnum"
-                    name="cardnumber"
-                    placeholder="1111-2222-3333-4444"
-                    required
-                    value="4242424242424242"
-                  />
-                  <label htmlFor="expmonth">Exp Month</label>
-                  <input
-                    type="text"
-                    id="expmonth"
-                    name="expmonth"
-                    placeholder="September"
-                    required
-                    value="January"
-                  />
-                  <div className="row">
-                    <div className="col-50">
-                      <label htmlFor="expyear">Exp Year</label>
-                      <input
-                        type="text"
-                        id="expyear"
-                        name="expyear"
-                        placeholder="2018"
-                        required
-                        value="2023"
-                      />
-                    </div>
-                    <div className="col-50">
-                      <label htmlFor="cvv">CVV</label>
-                      <input
-                        type="text"
-                        id="cvv"
-                        name="cvv"
-                        placeholder="352"
-                        required
-                        value="123"
-                      />
-                    </div>
-                    <div>
-                      <input
-                        type="submit"
-                        value="Submit Payment"
-                        className="btn btn-primary w-50 centered"
-                      />
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </form>
           </div>
         </div>
+        <div className="w-100"><Footer /></div>
       </div>
-      <Footer />
     </div>
   );
 }

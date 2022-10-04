@@ -113,11 +113,11 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
               </button>
             )}
           </div>
-          <div className="clearfix mb-1 d-flex justify-content-center">
+          {/* <div className="clearfix mb-1 d-flex justify-content-center">
             <span className="float-end">
               <i className="far fa-heart" style={{ cursor: "pointer" }}></i>
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

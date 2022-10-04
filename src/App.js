@@ -118,7 +118,7 @@ function App() {
     })
   }
 
-  function handleCheckout() {
+  function handleReservation() {
     if (cartNumber === 0) {
       return
     } else {
@@ -213,7 +213,7 @@ function App() {
             cart={cart}
             removeCartItem={removeCartItem}
             cartNumber={cartNumber}
-            handleCheckout={handleCheckout}
+            handleReservation={handleReservation}
           />
         </div>
       ) : null}

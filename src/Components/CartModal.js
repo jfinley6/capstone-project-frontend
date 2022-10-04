@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function CartModal({ handleClose, show, cartTotal, cartRemoveAll, cart, removeCartItem, cartNumber, handleCheckout }) {
+function CartModal({ handleClose, show, cartTotal, cartRemoveAll, cart, removeCartItem, cartNumber, handleReservation }) {
 
   const cartItems = cart.map((item) => {
     return (
@@ -50,7 +50,7 @@ function CartModal({ handleClose, show, cartTotal, cartRemoveAll, cart, removeCa
           <Button variant="outline-danger" onClick={cartRemoveAll}>
             Remove All
           </Button>
-          <Button variant="warning" onClick={handleCheckout}>
+          <Button variant="warning" onClick={handleReservation}>
             Checkout
           </Button>
         </Modal.Footer>

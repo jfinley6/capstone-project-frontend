@@ -221,9 +221,9 @@ function SideBar({
             Distance Driver
           </button>
         </div>
-        <button className="w3-bar-item w3-button text-center">
+        {/* <button className="w3-bar-item w3-button text-center">
           Manufacturers
-        </button>
+        </button> */}
       </div>
 
       <a
