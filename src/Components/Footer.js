@@ -98,13 +98,13 @@ function Footer() {
           <p>
             <i className="fa fa-fw fa-envelope"></i> johnfinley@gmail.com
           </p>
-          <h4 className="text-center">We accept</h4>
+          {/* <h4 className="text-center">We accept</h4>
           <p>
             <i className="fa fa-fw fa-cc-amex"></i> Amex
           </p>
           <p className='mb-0'>
             <i className="fa fa-fw fa-credit-card"></i> Credit Card
-          </p>
+          </p> */}
             <hr
               style={{
                 color: "black",
@@ -112,7 +112,7 @@ function Footer() {
                 height: "1px",
                 width: "40%",
                 margin: "0",
-                marginBottom: "7px",
+                marginBottom: "10px",
                 marginTop: "7px"
               }}
             />
