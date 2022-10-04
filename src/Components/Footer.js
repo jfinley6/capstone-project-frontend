@@ -3,8 +3,8 @@ import React from 'react'
 function Footer() {
   return (
     <footer className="w3-padding-64 w3-light-grey w3-small" id="footer">
-      <div className="w3-row-padding d-flex">
-        <div className="w3-col s4">
+      <div className="w3-row-padding d-flex justify-content-center">
+        {/* <div className="w3-col s4">
           <h4>About</h4>
           <p>
             <button
@@ -39,7 +39,7 @@ function Footer() {
               Find store
             </button>
           </p>
-        </div>
+        </div> */}
 
         <div className="w3-col s4 d-flex flex-column ">
           <h4>Contact</h4>

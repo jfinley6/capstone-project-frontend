@@ -108,7 +108,6 @@ function SideBar({
               {" "}
               {cartNumber}{" "}
             </span>
-            <i role="button" className="fa fa-search"></i>
           </p>
         </header>
         <button

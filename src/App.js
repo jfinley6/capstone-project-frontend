@@ -34,8 +34,8 @@ function App() {
           return;
         } else {
           setCartNumber(response.data.total_items);
-          setCartTotal(response.data.total_price)
-          setCart(response.data.discs)
+          setCartTotal(response.data.total_price);
+          setCart(response.data.discs);
         }
       });
   }, [loggedInStatus]);
@@ -84,47 +84,49 @@ function App() {
         setLoggedInStatus("NOT_LOGGED_IN");
         setUser({});
         setCartNumber(0);
-        setCart([])
+        setCart([]);
+        setCartTotal(0);
       })
       .catch((error) => console.log(error));
   }
 
   function addToCart(disc_id) {
-    axios.post(`http://localhost:3001/new/${user.id}/${disc_id}`)
-    .then(response => {
-      setCartNumber(cartNumber + 1)
-      setCart(cart => [...cart, response.data])
-      setCartTotal(cartTotal + response.data.price)
-    })
+    axios
+      .post(`http://localhost:3001/new/${user.id}/${disc_id}`)
+      .then((response) => {
+        setCartNumber(cartNumber + 1);
+        setCart((cart) => [...cart, response.data]);
+        setCartTotal(cartTotal + response.data.price);
+      });
   }
 
   function cartRemoveAll() {
-    axios.delete(`http://localhost:3001/delete/${user.id}`)
-    .then(() => {
-      setCartNumber(0)
-      setCart([])
-      setCartTotal(0)
-    })
+    axios.delete(`http://localhost:3001/delete/${user.id}`).then(() => {
+      setCartNumber(0);
+      setCart([]);
+      setCartTotal(0);
+    });
   }
 
   function removeCartItem(disc_id) {
-    axios.delete(`http://localhost:3001/destroy/${user.id}/${disc_id}`)
-    .then(() => {
-      setCartNumber(cartNumber - 1)
-      let disc = cart.find((element) => element.id === disc_id);
-      setCartTotal(cartTotal - disc.price)
-      const newDiscs = cart.filter((item) => item.id !== disc.id);
-      setCart(newDiscs);
-    })
+    axios
+      .delete(`http://localhost:3001/destroy/${user.id}/${disc_id}`)
+      .then(() => {
+        setCartNumber(cartNumber - 1);
+        let disc = cart.find((element) => element.id === disc_id);
+        setCartTotal(cartTotal - disc.price);
+        const newDiscs = cart.filter((item) => item.id !== disc.id);
+        setCart(newDiscs);
+      });
   }
 
   function handleReservation() {
     if (cartNumber === 0) {
-      return
+      return;
     } else {
-      window.scrollTo(0,0)
-      setShow(false)
-      history.push("/checkout")
+      window.scrollTo(0, 0);
+      setShow(false);
+      history.push("/checkout");
     }
   }
 
@@ -136,13 +138,11 @@ function App() {
     document.getElementById("mySidebar").style.display = "none";
   }
   function handleClose() {
-    setShow(false)
+    setShow(false);
   }
 
   function handleShow() {
-
-      setShow(true);
-
+    setShow(true);
   }
 
   // I'm using "click" but it works with any event

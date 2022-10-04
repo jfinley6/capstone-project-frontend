@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import Footer from "./Footer";
 
 function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
   const {

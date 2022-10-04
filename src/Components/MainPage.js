@@ -5,10 +5,18 @@ import SmallHeader from "./SmallHeader";
 import MainPageDiscPreview from "./MainPageDiscPreview";
 import Footer from "./Footer";
 
-function MainPage({ w3_open, w3_close, setDiscCategory, setDiscs, setChange, setPage, setSortType }) {
+function MainPage({
+  w3_open,
+  w3_close,
+  setDiscCategory,
+  setDiscs,
+  setChange,
+  setPage,
+  setSortType,
+}) {
   const [mainPageDiscs, setMainPageDiscs] = useState([]);
-  const history = useHistory()
-  const current = new Date()
+  const history = useHistory();
+  const current = new Date();
   let longMonth = current.toLocaleString("en-us", { month: "long" });
   const date = `${current.getDate()}, ${current.getFullYear()}`;
 
@@ -60,15 +68,18 @@ function MainPage({ w3_open, w3_close, setDiscCategory, setDiscs, setChange, set
             <h1 className="w3-xxlarge w3-hide-small">Pick-Up in Store</h1>
             <h1 className="w3-hide-large w3-hide-medium">Pick-Up in Store</h1>
             <p>
-              <button onClick={() => {
-                setDiscCategory("All Discs");
-                setDiscs([]);
-                history.push("/category/all");
-                setChange((current) => !current);
-                setPage(1);
-                setSortType("name");
-                document.querySelector("#selectSort").value = "name";
-              }} className="w3-button w3-black w3-padding-large w3-large">
+              <button
+                onClick={() => {
+                  setDiscCategory("All Discs");
+                  setDiscs([]);
+                  history.push("/category/all");
+                  setChange((current) => !current);
+                  setPage(1);
+                  setSortType("name");
+                  document.querySelector("#selectSort").value = "name";
+                }}
+                className="w3-button w3-black w3-padding-large w3-large"
+              >
                 SHOP NOW
               </button>
             </p>
@@ -76,8 +87,14 @@ function MainPage({ w3_open, w3_close, setDiscCategory, setDiscs, setChange, set
         </div>
 
         {/* <!-- Product grid --> */}
-        <h1 className="mt-3"><strong>Discs of the Day</strong></h1>
-        <h6><strong>{longMonth} {date}</strong></h6>
+        <h1 className="mt-3">
+          <strong>Discs of the Day</strong>
+        </h1>
+        <h6>
+          <strong>
+            {longMonth} {date}
+          </strong>
+        </h6>
         {/* <h6 className="mt-1"><strong>Enjoy 10% off today only!</strong></h6> */}
         <div className="w3-row mt-4">{discPreviews}</div>
 

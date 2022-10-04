@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SmallHeader from "./SmallHeader";
 import "/Users/johnfinley/Development/code/phase-5/capstone-frontend/src/DiscPage.css";
 import { useLocation } from "react-router-dom";
+import Footer from "./Footer";
 
 function DiscPage({ addToCart, removeCartItem, cart }) {
   const location = useLocation();
@@ -29,7 +30,7 @@ function DiscPage({ addToCart, removeCartItem, cart }) {
           width: "fit-content",
         }}
       >
-        <div className="product">
+        <div className="product mb-4">
           <div className="product-img">
             <img id="picture1" src={location.state.state.picture_url} alt="" />
           </div>
@@ -72,6 +73,7 @@ function DiscPage({ addToCart, removeCartItem, cart }) {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );

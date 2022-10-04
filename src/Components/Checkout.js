@@ -31,14 +31,14 @@ function Checkout({ cart, cartTotal, cartNumber }) {
         <h1 className="text-left" style={{ fontFamily: "copperplate" }}>
           Reservation
         </h1>
-        <div className="mr-0 w-75">
+        <div className="mr-0 w-75 mb-4">
           <div className="container">
             <form action="/action_page.php">
               <div className="row">
                 <div className="col-25">
                   <div className="container">
                     <h4 className="d-flex justify-content-between">
-                      Cart
+                      Order
                       <span className="price" style={{ color: "black" }}>
                         <i className="fa fa-shopping-cart"></i>
                         <b> {cartNumber}</b>
