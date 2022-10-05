@@ -1,12 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import SmallHeader from "./SmallHeader";
 import { useHistory } from "react-router-dom";
-import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import axios from "axios";
 
-function Checkout({ cart, cartTotal, cartNumber }) {
+function Checkout({ cart, cartTotal, cartNumber, user, setCart, setCartTotal, setCartNumber }) {
+  const [show, setShow] = useState(false);
+  const [orderId, setOrderId] = useState("")
+
   const history = useHistory();
+
+  function handleClose() {
+    setCart([])
+    setCartNumber(0)
+    setCartTotal(0)
+    setShow(false)
+    history.push("/")
+  }
+
   useEffect(() => {
+    const orderNumber = require("ordersid-generator");
+    setOrderId(orderNumber("short","OOB"))
+  },[])
+
+  function handleShow(event) {
+  
+    event.preventDefault()
+    axios.post(
+      `http://localhost:3001/order/${user.id}/${orderId}/${cartTotal.toString()}`
+    ).then((response) => console.log(response))
+    setShow(true)
+  }
+    useEffect(() => {
     if (cart.length === 0) {
       history.push("/");
     }
@@ -14,7 +41,7 @@ function Checkout({ cart, cartTotal, cartNumber }) {
 
   const cartNames = cart.map((item) => {
     return (
-      <p key={cart.id} className="d-flex">
+      <p key={item.id} className="d-flex">
         <p className="w-100" href="#">
           {item.name}
         </p>{" "}
@@ -26,7 +53,7 @@ function Checkout({ cart, cartTotal, cartNumber }) {
     <div>
       <SmallHeader />
       <div
-        className="w3-main d-flex flex-column justify-content-center align-items-center mb-3"
+        className="w3-main d-flex flex-column justify-content-center align-items-center mb-3 mt-lg-0 mt-sm-5 mt-xs-5 p-xs-5 pt-sm-5"
         style={{ marginLeft: "250px", marginTop: "70px" }}
       >
         <h1 className="text-left" style={{ fontFamily: "copperplate" }}>
@@ -63,24 +90,44 @@ function Checkout({ cart, cartTotal, cartNumber }) {
             </form>
           </div>
         </div>
-        <div class="form-check d-flex flex-column w-50">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-          />
-          <label class="form-check-label" for="flexCheckDefault">
-            By reserving, you agree to pick up your order within 24 hours
-          </label>
-          <div>
-            <button className="w-50 mb-3 mt-2 btn btn-primary">Reserve</button>
+        <form
+          onSubmit={handleShow}
+          className="form-check d-flex flex-column w-50"
+        >
+          <div className="d-flex flex-column">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+              required="required"
+            />
+            <label className="form-check-label" htmlFor="flexCheckDefault">
+              By reserving, you agree to pick up your order within 24 hours
+            </label>
+            <div>
+              <button type="submit" className="w-50 mb-3 mt-2 btn btn-primary">
+                Reserve
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
         <div className="w-100">
           <Footer />
         </div>
       </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Reservation Information</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Congratulations on your reservation!</Modal.Body>
+        <Modal.Body>Your order number is {orderId} !</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

@@ -203,6 +203,8 @@ function App() {
             removeCartItem={removeCartItem}
             cartTotal={cartTotal}
             cartNumber={cartNumber}
+            setCartTotal={setCartTotal}
+            setCartNumber={setCartNumber}
           />
           <CartModal
             handleClose={handleClose}

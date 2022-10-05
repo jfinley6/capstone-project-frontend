@@ -34,7 +34,9 @@ function Content({
   addToCart,
   removeCartItem,
   cartTotal,
-  cartNumber
+  cartNumber,
+  setCartNumber,
+  setCartTotal
 }) {
   return (
     <div>
@@ -81,7 +83,7 @@ function Content({
           />
         </Route>
         <Route exact path="/checkout">
-          <Checkout cart={cart} cartTotal={cartTotal} cartNumber={cartNumber}/>
+          <Checkout cart={cart} cartTotal={cartTotal} cartNumber={cartNumber} user={user} setCart={setCart} setCartNumber={setCartNumber} setCartTotal={setCartTotal}/>
         </Route>
         <Route exact path="/disc/:name">
           <DiscPage addToCart={addToCart} removeCartItem={removeCartItem} cart={cart}/>        
