@@ -108,6 +108,7 @@ function Footer() {
                 required
                 value={email}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </p>
             <p>
@@ -119,6 +120,7 @@ function Footer() {
                 required
                 value={subject}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </p>
             <p>
@@ -130,6 +132,7 @@ function Footer() {
                 required
                 value={message}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </p>
             <button type="submit" className="w3-button w3-block w3-black">

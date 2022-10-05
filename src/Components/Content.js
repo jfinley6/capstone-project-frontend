@@ -1,6 +1,7 @@
 import React from "react";
 import MainPage from "./MainPage";
 import Discs from "./Discs";
+import Profile from "./Profile";
 
 
 import { Switch, Route } from "react-router-dom";
@@ -84,6 +85,9 @@ function Content({
         </Route>
         <Route exact path="/disc/:name">
           <DiscPage addToCart={addToCart} removeCartItem={removeCartItem} cart={cart}/>        
+        </Route>
+        <Route exact path ="/profile">
+          <Profile user={user} loggedInStatus={loggedInStatus}/>
         </Route>
       </Switch>
     </div>
