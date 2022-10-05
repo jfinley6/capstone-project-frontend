@@ -66,6 +66,9 @@ function SideBar({
               alt="Generic placeholder"
               className="rounded-circle img-fluid mx-2"
               style={{ width: "65px" }}
+              onClick={() => {
+                history.push("/profile")
+              }}
             ></img>
 
             <button
