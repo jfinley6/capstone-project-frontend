@@ -86,6 +86,7 @@ function App() {
         setCartNumber(0);
         setCart([]);
         setCartTotal(0);
+        history.push("/")
       })
       .catch((error) => console.log(error));
   }
