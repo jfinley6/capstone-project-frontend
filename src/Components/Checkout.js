@@ -1,20 +1,21 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Footer from "./Footer";
 import SmallHeader from "./SmallHeader";
 import { useHistory } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 
 function Checkout({ cart, cartTotal, cartNumber }) {
-    const history = useHistory()
-    useEffect(() => {
-        if (cart.length === 0) {
-            history.push("/")
-        }
-    }, [cart])
+  const history = useHistory();
+  useEffect(() => {
+    if (cart.length === 0) {
+      history.push("/");
+    }
+  }, [cart]);
 
   const cartNames = cart.map((item) => {
     return (
       <p key={cart.id} className="d-flex">
-        <p className="w-100"  href="#">
+        <p className="w-100" href="#">
           {item.name}
         </p>{" "}
         <div>${item.price}</div>
@@ -58,12 +59,27 @@ function Checkout({ cart, cartTotal, cartNumber }) {
                     </p>
                   </div>
                 </div>
-
               </div>
             </form>
           </div>
         </div>
-        <div className="w-100"><Footer /></div>
+        <div class="form-check d-flex flex-column w-50">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            By reserving, you agree to pick up your order within 24 hours
+          </label>
+          <div>
+            <button className="w-50 mb-3 mt-2 btn btn-primary">Reserve</button>
+          </div>
+        </div>
+        <div className="w-100">
+          <Footer />
+        </div>
       </div>
     </div>
   );

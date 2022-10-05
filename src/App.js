@@ -222,3 +222,8 @@ function App() {
 }
 
 export default App;
+
+
+let items = [12, 548, "a", 2, 5478, "foo", 8852, , "Doe", 2145, 119];
+
+let randomItem = items[Math.floor(Math.random() * items.length)];
