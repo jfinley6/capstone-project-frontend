@@ -6,34 +6,45 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 
-function Checkout({ cart, cartTotal, cartNumber, user, setCart, setCartTotal, setCartNumber }) {
+function Checkout({
+  cart,
+  cartTotal,
+  cartNumber,
+  user,
+  setCart,
+  setCartTotal,
+  setCartNumber,
+}) {
   const [show, setShow] = useState(false);
-  const [orderId, setOrderId] = useState("")
+  const [orderId, setOrderId] = useState("");
 
   const history = useHistory();
 
   function handleClose() {
-    setCart([])
-    setCartNumber(0)
-    setCartTotal(0)
-    setShow(false)
-    history.push("/")
+    setCart([]);
+    setCartNumber(0);
+    setCartTotal(0);
+    setShow(false);
+    history.push("/");
   }
 
   useEffect(() => {
     const orderNumber = require("ordersid-generator");
-    setOrderId(orderNumber("short","OOB"))
-  },[])
+    setOrderId(orderNumber("short", "OOB"));
+  }, []);
 
   function handleShow(event) {
-  
-    event.preventDefault()
-    axios.post(
-      `http://localhost:3001/order/${user.id}/${orderId}/${cartTotal.toString()}`
-    ).then((response) => console.log(response))
-    setShow(true)
+    event.preventDefault();
+    axios
+      .post(
+        `https://warm-journey-57671.herokuapp.com/order/${
+          user.id
+        }/${orderId}/${cartTotal.toString()}`
+      )
+      .then((response) => console.log(response));
+    setShow(true);
   }
-    useEffect(() => {
+  useEffect(() => {
     if (cart.length === 0) {
       history.push("/");
     }

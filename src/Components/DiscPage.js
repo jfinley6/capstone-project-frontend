@@ -4,7 +4,7 @@ import "/Users/johnfinley/Development/code/phase-5/capstone-frontend/src/DiscPag
 import { useLocation } from "react-router-dom";
 import Footer from "./Footer";
 
-function DiscPage({ addToCart, removeCartItem, cart }) {
+function DiscPage({ addToCart, removeCartItem, cart, loggedInStatus }) {
   const location = useLocation();
 
   useEffect(() => {
@@ -64,6 +64,7 @@ function DiscPage({ addToCart, removeCartItem, cart }) {
                 </button>
               ) : (
                 <button
+                  disabled={loggedInStatus === "LOGGED_IN" ? false : true}
                   onClick={() => addToCart(location.state.state.id)}
                   className="btn btn-warning bold-btn"
                 >

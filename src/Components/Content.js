@@ -80,13 +80,14 @@ function Content({
             cart={cart}
             addToCart={addToCart}
             removeCartItem={removeCartItem}
+            loggedInStatus={loggedInStatus}
           />
         </Route>
         <Route exact path="/checkout">
           <Checkout cart={cart} cartTotal={cartTotal} cartNumber={cartNumber} user={user} setCart={setCart} setCartNumber={setCartNumber} setCartTotal={setCartTotal}/>
         </Route>
         <Route exact path="/disc/:name">
-          <DiscPage addToCart={addToCart} removeCartItem={removeCartItem} cart={cart}/>        
+          <DiscPage addToCart={addToCart} removeCartItem={removeCartItem} cart={cart} loggedInStatus={loggedInStatus}/>        
         </Route>
         <Route exact path ="/profile">
           <Profile user={user} loggedInStatus={loggedInStatus}/>

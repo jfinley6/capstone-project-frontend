@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import Footer from "./Footer";
 
-function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
+function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem, loggedInStatus }) {
   const {
     picture_url,
     brand,
@@ -14,6 +14,8 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
     category,
     price,
   } = disc;
+
+  console.log(loggedInStatus)
 
   const history = useHistory()
 
@@ -107,6 +109,7 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem }) {
               </button>
             ) : (
               <button
+              disabled={loggedInStatus === "LOGGED_IN" ? false : true}
                 onClick={() => addToCart(disc.id)}
                 className="btn btn-warning bold-btn"
               >

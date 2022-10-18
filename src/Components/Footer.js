@@ -1,43 +1,40 @@
-import React, { useState } from 'react'
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 function Footer() {
   const [form, setForm] = useState({
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
-  const [successfulMessage, setSuccessfulMessage] = useState(false)
+  const [successfulMessage, setSuccessfulMessage] = useState(false);
 
   const { name, email, subject, message } = form;
 
   function handleFeedback(event) {
-    event.preventDefault()
-    axios.post("http://localhost:3001/feedbacks", 
-    {
+    event.preventDefault();
+    axios
+      .post("https://warm-journey-57671.herokuapp.com/feedbacks", {
         message: {
           name: name,
           email: email,
           subject: subject,
-          message: message
-        }
-    }).then(() => {
-      setForm({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
+          message: message,
+        },
+      })
+      .then(() => {
+        setForm({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setSuccessfulMessage(true);
       });
-      setSuccessfulMessage(true)
-    })
-
-    
-    
   }
 
   function handleChange(event) {
-  
     setForm({
       ...form,
       [event.target.name]: event.target.value,
@@ -46,7 +43,7 @@ function Footer() {
 
   return (
     <footer className="w3-padding-64 w3-light-grey w3-small" id="footer">
-      <div className="w3-row-padding d-flex justify-content-center">
+      <div className="w3-row-padding d-flex justify-content-evenly">
         {/* <div className="w3-col s4">
           <h4>About</h4>
           <p>
@@ -87,7 +84,12 @@ function Footer() {
         <div className="w3-col s4 d-flex flex-column ">
           <h4>Contact</h4>
           <p>Questions? Go ahead.</p>
-          <form action="/action_page.php" target="_blank" rel="noreferrer" onSubmit={handleFeedback}>
+          <form
+            action="/action_page.php"
+            target="_blank"
+            rel="noreferrer"
+            onSubmit={handleFeedback}
+          >
             <p>
               <input
                 className="w3-input w3-border"
@@ -138,7 +140,11 @@ function Footer() {
             <button type="submit" className="w3-button w3-block w3-black">
               Send
             </button>
-            {successfulMessage === true ? <h6 className='mt-2 text-success'>Your message was successfully sent</h6> : null}
+            {successfulMessage === true ? (
+              <h6 className="mt-2 text-success">
+                Your message was successfully sent
+              </h6>
+            ) : null}
           </form>
         </div>
 
@@ -200,4 +206,4 @@ function Footer() {
   );
 }
 
-export default Footer
+export default Footer;
