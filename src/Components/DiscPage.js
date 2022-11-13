@@ -64,7 +64,7 @@ function DiscPage({ addToCart, removeCartItem, cart, loggedInStatus }) {
                 </button>
               ) : (
                 <button
-                  disabled={loggedInStatus === "LOGGED_IN" ? false : true}
+                  // disabled={loggedInStatus === "LOGGED_IN" ? false : true}
                   onClick={() => addToCart(location.state.state.id)}
                   className="btn btn-warning bold-btn"
                 >

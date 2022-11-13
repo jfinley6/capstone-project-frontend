@@ -92,6 +92,11 @@ function App() {
   }
 
   function addToCart(disc_id) {
+    if (loggedInStatus === "NOT_LOGGED_IN") {
+      history.push("/authenticate")
+    }
+    
+
     axios
       .post(
         `https://warm-journey-57671.herokuapp.com/new/${user.id}/${disc_id}`
@@ -225,7 +230,16 @@ function App() {
             handleReservation={handleReservation}
           />
         </div>
-      ) : null}
+      ) : (
+        <div
+          style={{ height: "100vh" }}
+          className="d-flex flex-column align-items-center justify-content-center"
+        >
+          <span className="loader"></span>
+          <h3>Server Loading</h3>
+          <h5>Please Stand By</h5>
+        </div>
+      )}
     </>
   );
 }

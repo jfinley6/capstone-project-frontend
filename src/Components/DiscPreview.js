@@ -109,7 +109,7 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem, log
               </button>
             ) : (
               <button
-              disabled={loggedInStatus === "LOGGED_IN" ? false : true}
+              // disabled={loggedInStatus === "LOGGED_IN" ? false : true}
                 onClick={() => addToCart(disc.id)}
                 className="btn btn-warning bold-btn"
               >

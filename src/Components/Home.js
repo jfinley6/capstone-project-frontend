@@ -21,6 +21,7 @@ function Home({ handleLogin, screen, setScreen, w3_open, w3_close }) {
         style={{ marginLeft: "250px", marginTop: "70px" }}
       >
         <h1>{screen ? "Login" : "Signup"}</h1>
+        <p>to add discs to your cart</p>
         {screen !== true ? (
           <Registration
             handleSuccessfulAuth={handleSuccessfulAuth}
