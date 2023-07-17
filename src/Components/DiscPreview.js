@@ -27,7 +27,7 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem, log
   });  
 
   return (
-    <div className="container-fluid col hp">
+    <div className="container-fluid col hp mb-3">
       <div className="card h-100 shadow">
         <div className="w-100 d-flex justify-content-between">
           <div className="label-top shadow-sm mx-1 my-1">
