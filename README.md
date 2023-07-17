@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# Phase-5-Project Out of Bounds Discs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A disc golf shop which allows you to browse a selection of discs. After signing up for an account, you will receive one email welcoming you to the site. By having an account, you are able to add discs to a shopping cart and once you are happy with your selection, check out. Clicking the profile icon button will take you to a page where you can see all of your orders. A minute after making the order it will change from "processing" to "ready for pickup" to simulate your order being processed. On the home page there is a spot for "Discs of the Day" which will reset every day at midnight. The footer has a contact form which will send an email on your behalf to the site owner. On the lefthand side of the page you are able to select the types of discs to browse. Each type of disc has a different number and is paginated depending on how many they have. Once you are browsing discs, you can also sort by the different statistics that a disc has. Clicking a disc will take you to it's page where you can learn more about it. 
 
-## Available Scripts
+* [Live Version](https://phase-5-project.netlify.app/)
+* [Backend Repo](https://github.com/jfinley6/capstone-project-backend)
 
-In the project directory, you can run:
+## Built With
 
-### `npm start`
+* [ReactJS](https://reactjs.org/docs/getting-started.html) - The web framework used
+* [Ruby on Rails](https://guides.rubyonrails.org) - Server Side Web Application
+* [Bootstrap](https://getbootstrap.com/docs/3.4/css/) - Used to style the front end
+* [ActionMailer](https://guides.rubyonrails.org/action_mailer_basics.html) - Used to send email to user on signup
+* [Whenever Gem](https://github.com/javan/whenever) - Used to schedule order processing
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Authors
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* **John Finley** - [Github](https://github.com/jfinley6) | [LinkedIn](https://www.linkedin.com/in/john-tyler-finley/) 
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Acknowledgments
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Thanks to Flatiron School for giving me the tools I needed to complete this project!
