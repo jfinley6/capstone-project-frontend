@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import SmallHeader from "./SmallHeader";
-import "/Users/johnfinley/Development/code/phase-5/capstone-frontend/src/DiscPage.css";
+import "../../src/DiscPage.css";
 import { useLocation } from "react-router-dom";
 import Footer from "./Footer";
 

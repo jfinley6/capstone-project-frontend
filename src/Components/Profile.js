@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SmallHeader from "./SmallHeader";
-import "/Users/johnfinley/Development/code/phase-5/capstone-frontend/src/Profile.css";
+import "../../src/Profile.css";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";

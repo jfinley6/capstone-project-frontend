@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DiscPreview from "./DiscPreview";
 import axios from "axios";
-import "/Users/johnfinley/Development/code/phase-5/capstone-frontend/src/Discs.css";
+import "../../src/Discs.css";
 import { useParams } from "react-router-dom";
 import SmallHeader from "./SmallHeader";
 import ReactPaginate from "react-paginate";
@@ -137,6 +137,7 @@ function Discs({
         </div>
       )}
     </div>
+
   );
 }
 
