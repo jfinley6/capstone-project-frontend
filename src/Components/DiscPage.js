@@ -12,7 +12,7 @@ function DiscPage({ addToCart, removeCartItem, cart, loggedInStatus }) {
   }, []);
 
   const isFound = cart.some((element) => {
-    if (element.id === location.state.state.id) {
+    if (element.id === location.state.id) {
       return true;
     }
     return false;
@@ -32,32 +32,32 @@ function DiscPage({ addToCart, removeCartItem, cart, loggedInStatus }) {
       >
         <div className="product mb-4">
           <div className="product-img">
-            <img id="picture1" src={location.state.state.picture_url} alt="" />
+            <img id="picture1" src={location.state.picture_url} alt="" />
           </div>
           <div className="product-listing">
             <div>
-              <h1 className="name">{location.state.state.name}</h1>
-              <h6>{location.state.state.brand}</h6>
+              <h1 className="name">{location.state.name}</h1>
+              <h6>{location.state.brand}</h6>
               <p className="info">
                 <img
                   style={{ width: "60%" }}
-                  src={location.state.state.flight_path}
+                  src={location.state.flight_path}
                   alt=""
                 />
               </p>
               <p>
-                Speed: {location.state.state.speed} | Glide:{" "}
-                {location.state.state.glide} | Turn: {location.state.state.fade}{" "}
-                | Fade: {location.state.state.fade}{" "}
+                Speed: {location.state.speed} | Glide:{" "}
+                {location.state.glide} | Turn: {location.state.fade}{" "}
+                | Fade: {location.state.fade}{" "}
               </p>
               <p className="mb-0">
-                {location.state.state.stability} {location.state.state.category}
+                {location.state.stability} {location.state.category}
               </p>
-              <p className="price">$ {location.state.state.price}</p>
+              <p className="price">$ {location.state.price}</p>
 
               {isFound ? (
                 <button
-                  onClick={() => removeCartItem(location.state.state.id)}
+                  onClick={() => removeCartItem(location.state.id)}
                   className="btn btn-warning bold-btn"
                 >
                   Remove From Cart
@@ -65,7 +65,7 @@ function DiscPage({ addToCart, removeCartItem, cart, loggedInStatus }) {
               ) : (
                 <button
                   // disabled={loggedInStatus === "LOGGED_IN" ? false : true}
-                  onClick={() => addToCart(location.state.state.id)}
+                  onClick={() => addToCart(location.state.id)}
                   className="btn btn-warning bold-btn"
                 >
                   Add to cart
