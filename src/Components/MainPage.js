@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import SmallHeader from "./SmallHeader";
 import MainPageDiscPreview from "./MainPageDiscPreview";
@@ -15,7 +15,7 @@ function MainPage({
   setSortType,
 }) {
   const [mainPageDiscs, setMainPageDiscs] = useState([]);
-  const history = useHistory();
+  const navigate = useNavigate()
   const current = new Date();
   let longMonth = current.toLocaleString("en-us", { month: "long" });
   const date = `${current.getDate()}, ${current.getFullYear()}`;
@@ -74,7 +74,7 @@ function MainPage({
                 onClick={() => {
                   setDiscCategory("All Discs");
                   setDiscs([]);
-                  history.push("/category/all");
+                  navigate("/category/all");
                   setChange((current) => !current);
                   setPage(1);
                   setSortType("name");

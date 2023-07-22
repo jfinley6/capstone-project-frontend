@@ -1,8 +1,9 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function MainPageDiscPreview({disc}) {
-  const history = useHistory()
+  const navigate = useNavigate();
+
   return (
     <div className="w3-col l3 s6">
       <div className="w3-container">
@@ -15,7 +16,7 @@ function MainPageDiscPreview({disc}) {
           <div className="w3-display-middle w3-display-hover">
             <button
               onClick={() =>
-                history.push(`/disc/${disc.name_slug}`, { state: disc })
+                navigate(`/disc/${disc.name_slug}`, { state: disc })
               }
               className="w3-button w3-black"
             >

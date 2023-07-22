@@ -1,15 +1,15 @@
 import React from "react";
 import Registration from "./auth/Registration";
 import Login from "./auth/Login";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SmallHeader from "./SmallHeader";
 
 function Home({ handleLogin, screen, setScreen, w3_open, w3_close }) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function handleSuccessfulAuth(data) {
     handleLogin(data);
-    history.push("/");
+    navigate("/");
   }
 
   return (

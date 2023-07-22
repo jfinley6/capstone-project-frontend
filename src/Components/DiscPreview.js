@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 
 function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem, loggedInStatus }) {
@@ -15,7 +15,7 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem, log
     price,
   } = disc;
 
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const isFound = cart.some((element) => {
     if (element.id === disc.id) {
@@ -65,7 +65,7 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem, log
             </button>
           </div>
         </div>
-        <div onClick={() => history.push(`/disc/${disc.name_slug}`, {state: disc})}>
+        <div onClick={() => navigate(`/disc/${disc.name_slug}`, {state: disc})}>
           <img
             role="button"
             src={picture_url}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import SmallHeader from "./SmallHeader";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
@@ -18,14 +18,14 @@ function Checkout({
   const [show, setShow] = useState(false);
   const [orderId, setOrderId] = useState("");
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function handleClose() {
     setCart([]);
     setCartNumber(0);
     setCartTotal(0);
     setShow(false);
-    history.push("/");
+    navigate("/");
   }
 
   useEffect(() => {
@@ -46,7 +46,7 @@ function Checkout({
   }
   useEffect(() => {
     if (cart.length === 0) {
-      history.push("/");
+      navigate("/");
     }
   }, [cart]);
 

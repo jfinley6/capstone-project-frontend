@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SideBar({
   w3_close,
@@ -15,7 +15,7 @@ function SideBar({
   setSortType,
   handleShow
 }) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function myAccFunc() {
     var x = document.getElementById("demoAcc");
@@ -41,7 +41,7 @@ function SideBar({
         ></i>
         <h3
           onClick={() => {
-            history.push("/");
+            navigate("/");
             window.scrollTo(0, 0);
           }}
           className="w3-wide"
@@ -67,7 +67,7 @@ function SideBar({
               className="rounded-circle img-fluid mx-2"
               style={{ width: "65px" }}
               onClick={() => {
-                history.push("/profile")
+                navigate("/profile")
               }}
             ></img>
 
@@ -83,7 +83,7 @@ function SideBar({
             <button
               onClick={() => {
                 setScreen(true);
-                history.push("/authenticate")
+                navigate("/authenticate")
                 window.scrollTo(0,0);
               }}
               className="w-75 btn btn-primary text-center mb-2"
@@ -93,7 +93,7 @@ function SideBar({
             <button
               onClick={() => {
                 setScreen(false);
-                history.push("/authenticate");
+                navigate("/authenticate");
                 window.scrollTo({ top: 0, left: 0, behavior: "auto" });
               }}
               className="w-75 btn btn-outline-primary text-center"
@@ -128,11 +128,11 @@ function SideBar({
             onClick={() => {
               setDiscCategory("All Discs")
               setDiscs([]);
-              history.push("/category/all");
+              navigate("/category/all");
               setChange((current) => !current);
               setPage(1);
               setSortType("name")
-              document.querySelector("#selectSort").value = "name";
+              // document.querySelector("#selectSort").value = "name";
             }}
             className="w3-bar-item w3-button"
           >
@@ -142,7 +142,7 @@ function SideBar({
             onClick={() => {
               setDiscCategory("Putters");
               setDiscs([]);
-              history.push("/category/putter");
+              navigate("/category/putter");
               setChange((current) => !current);
               setPage(1);
               setSortType("name");
@@ -156,7 +156,7 @@ function SideBar({
             onClick={() => {
               setDiscCategory("Approach Discs");
               setDiscs([]);
-              history.push("/category/approach");
+              navigate("/category/approach");
               setChange((current) => !current);
               setPage(1);
               setSortType("name");
@@ -170,7 +170,7 @@ function SideBar({
             onClick={() => {
               setDiscCategory("Midrange Discs");
               setDiscs([]);
-              history.push("/category/midrange");
+              navigate("/category/midrange");
               setChange((current) => !current);
               setPage(1);
               setSortType("name");
@@ -184,7 +184,7 @@ function SideBar({
             onClick={() => {
               setDiscCategory("Control Drivers");
               setDiscs([]);
-              history.push("/category/control-driver");
+              navigate("/category/control-driver");
               setChange((current) => !current);
               setPage(1);
               setSortType("name");
@@ -198,7 +198,7 @@ function SideBar({
             onClick={() => {
               setDiscCategory("Hybrid Drivers");
               setDiscs([]);
-              history.push("/category/hybrid-driver");
+              navigate("/category/hybrid-driver");
               setChange((current) => !current);
               setPage(1);
               setSortType("name");
@@ -212,7 +212,7 @@ function SideBar({
             onClick={() => {
               setDiscCategory("Distance Drivers");
               setDiscs([]);
-              history.push("/category/distance-driver");
+              navigate("/category/distance-driver");
               setChange((current) => !current);
               setPage(1);
               setSortType("name");
