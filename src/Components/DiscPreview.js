@@ -15,8 +15,6 @@ function DiscPreview({ disc, setCart, cart, user, addToCart, removeCartItem, log
     price,
   } = disc;
 
-  console.log(loggedInStatus)
-
   const history = useHistory()
 
   const isFound = cart.some((element) => {
