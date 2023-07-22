@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
 
-import Content from "./Components/Content";
 import SideBar from "./Components/SideBar";
 import CartModal from "./Components/CartModal";
+import MainPage from "./Components/MainPage";
+import Discs from "./Components/Discs";
+import Profile from "./Components/Profile";
+import Home from "./Components/Home";
+import Checkout from "./Components/Checkout";
+import DiscPage from "./Components/DiscPage";
 
 function App() {
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
@@ -22,7 +28,7 @@ function App() {
   const [show, setShow] = useState(false);
   const [cartTotal, setCartTotal] = useState(0);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -58,13 +64,13 @@ function App() {
         if (response.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
           setLoggedInStatus("LOGGED_IN");
           setUser(response.data.user);
-          history.push("/");
+          navigate("/");
         } else if (!response.data.logged_in && loggedInStatus === "LOGGED_IN") {
           setLoggedInStatus("NOT_LOGGED_IN");
           setUser({});
         } else if (!response.data.logged_in) {
           setUser({});
-          history.push("/");
+          navigate("/");
         }
       })
       .catch((error) => console.log(error));
@@ -86,16 +92,15 @@ function App() {
         setCartNumber(0);
         setCart([]);
         setCartTotal(0);
-        history.push("/");
+        navigate("/");
       })
       .catch((error) => console.log(error));
   }
 
   function addToCart(disc_id) {
     if (loggedInStatus === "NOT_LOGGED_IN") {
-      history.push("/authenticate")
+      navigate("/authenticate");
     }
-    
 
     axios
       .post(
@@ -138,7 +143,7 @@ function App() {
     } else {
       window.scrollTo(0, 0);
       setShow(false);
-      history.push("/checkout");
+      navigate("/checkout");
     }
   }
 
@@ -190,34 +195,88 @@ function App() {
             setSortType={setSortType}
             handleShow={handleShow}
           />
-          <Content
-            discs={discs}
-            setDiscs={setDiscs}
-            loggedInStatus={loggedInStatus}
-            user={user}
-            w3_close={w3_close}
-            w3_open={w3_open}
-            screen={screen}
-            setScreen={setScreen}
-            setLoggedInStatus={setLoggedInStatus}
-            handleLogin={handleLogin}
-            change={change}
-            page={page}
-            setPage={setPage}
-            discCategory={discCategory}
-            sortType={sortType}
-            setSortType={setSortType}
-            setDiscCategory={setDiscCategory}
-            setChange={setChange}
-            setCart={setCart}
-            cart={cart}
-            addToCart={addToCart}
-            removeCartItem={removeCartItem}
-            cartTotal={cartTotal}
-            cartNumber={cartNumber}
-            setCartTotal={setCartTotal}
-            setCartNumber={setCartNumber}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MainPage
+                  w3_open={w3_open}
+                  w3_close={w3_close}
+                  setDiscCategory={setDiscCategory}
+                  setDiscs={setDiscs}
+                  setChange={setChange}
+                  setPage={setPage}
+                  setSortType={setSortType}
+                />
+              }
+            ></Route>
+            <Route
+              path="/authenticate"
+              element={
+                <Home
+                  w3_open={w3_open}
+                  w3_close={w3_close}
+                  screen={screen}
+                  setScreen={setScreen}
+                  loggedInStatus={loggedInStatus}
+                  setLoggedInStatus={setLoggedInStatus}
+                  handleLogin={handleLogin}
+                />
+              }
+            ></Route>
+            <Route
+              path="/category/:category_slug"
+              element={
+                <Discs
+                  change={change}
+                  page={page}
+                  setPage={setPage}
+                  discs={discs}
+                  setDiscs={setDiscs}
+                  w3_open={w3_open}
+                  w3_close={w3_close}
+                  discCategory={discCategory}
+                  sortType={sortType}
+                  setSortType={setSortType}
+                  user={user}
+                  setCart={setCart}
+                  cart={cart}
+                  addToCart={addToCart}
+                  removeCartItem={removeCartItem}
+                  loggedInStatus={loggedInStatus}
+                />
+              }
+            ></Route>
+            <Route
+              path="/checkout"
+              element={
+                <Checkout
+                  cart={cart}
+                  cartTotal={cartTotal}
+                  cartNumber={cartNumber}
+                  user={user}
+                  setCart={setCart}
+                  setCartNumber={setCartNumber}
+                  setCartTotal={setCartTotal}
+                />
+              }
+            ></Route>
+            <Route
+              path="/disc/:name"
+              element={
+                <DiscPage
+                  addToCart={addToCart}
+                  removeCartItem={removeCartItem}
+                  cart={cart}
+                  loggedInStatus={loggedInStatus}
+                />
+              }
+            ></Route>
+            <Route
+              path="/profile"
+              element={<Profile user={user} loggedInStatus={loggedInStatus} />}
+            ></Route>
+          </Routes>
           <CartModal
             handleClose={handleClose}
             handleShow={handleShow}
